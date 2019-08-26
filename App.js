@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView} from 'react-native';
+import { SafeAreaView } from 'react-native';
 import styles from './Styles';
 
 // Components
@@ -13,8 +13,19 @@ import { Provider } from 'react-redux';
 import reducer from './reducer';
 import logger from 'redux-logger'
 
+// Redux Persist
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+import { PersistGate } from 'redux-persist/integration/react'
 
-const store = createStore(reducer, applyMiddleware(logger));
+const persistConfig = {
+  key: 'root',
+  storage,
+}
+
+const persistedReducer = persistReducer(persistConfig, reducer)
+const store = createStore(persistedReducer, applyMiddleware(logger));
+const persistor = persistStore(store)
 
 export default class App extends React.Component {
   constructor(props) {
@@ -23,11 +34,13 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <SafeAreaView style={styles.container}>
-        <Header />
-        <MainScreen/>
-          <Bottom/>
-        </SafeAreaView>
+        <PersistGate loading={null} persistor={persistor}>
+          <SafeAreaView style={styles.container}>
+            <Header />
+            <MainScreen />
+            <Bottom />
+          </SafeAreaView>
+        </PersistGate>
       </Provider>
     );
   }
