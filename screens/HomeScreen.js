@@ -10,6 +10,7 @@ class HomeScreen extends React.Component {
     constructor(props) {
         super(props);
     }
+
     render() {
         console.disableYellowBox = true;
 

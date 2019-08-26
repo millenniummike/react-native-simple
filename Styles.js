@@ -56,6 +56,20 @@ const styles = StyleSheet.create({
         textAlign:"center",
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    buttonAction: {
+        padding: 8,
+        margin:2,
+        width:width*0.33,
+        flex: 1,
+        backgroundColor: "grey",
+        textAlign:"center",
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    inputText: {
+        backgroundColor:'white',
+        padding:8
     }
 });
 
