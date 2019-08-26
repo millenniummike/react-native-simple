@@ -2,7 +2,7 @@ import React from 'react';
 import { View, ScrollView, } from 'react-native';
 import MenuScreen from './MenuScreen';
 import HomeScreen from './HomeScreen';
-import EditScreen from './EditScreen';
+import ListScreen from './ListScreen';
 
 import styles from '../Styles';
 import { connect } from 'react-redux';
@@ -16,7 +16,7 @@ class MainScreen extends React.Component {
         const {showScreen} = this.props
         switch (showScreen) {
             case 1: return <HomeScreen />;
-            case 2: return <EditScreen />;
+            case 2: return <ListScreen />;
             case 3: return <MenuScreen />;
             default: return <HomeScreen />;
         }

@@ -10,7 +10,7 @@ class MenuScreen extends React.Component {
         console.disableYellowBox = true;
         return (
             <View style={styles.mainContainer}>
-                <Text>Menu Screen</Text>
+                <Text style={styles.textTitle}>Menu Screen</Text>
             </View>
         );
     }

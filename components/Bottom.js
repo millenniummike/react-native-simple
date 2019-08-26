@@ -22,15 +22,15 @@ class BottomTabs extends React.Component {
         onPress={() => {
           this.props.setScreen(2);
         }}>
-        <Image style={styles.imageBottomNav} source={require("../media/tab_home.png")}></Image>
-        <Text style={styles.textBottomNav}>Edit</Text>
+        <Image style={styles.imageBottomNav} source={require("../media/tab_list.png")}></Image>
+        <Text style={styles.textBottomNav}>List</Text>
 
       </TouchableOpacity>
       <TouchableOpacity style={styles.buttonBottomNav}
         onPress={() => {
           this.props.setScreen(3);
         }}>
-        <Image style={styles.imageBottomNav} source={require("../media/tab_home.png")}></Image>
+        <Image style={styles.imageBottomNav} source={require("../media/tab_menu.png")}></Image>
         <Text style={styles.textBottomNav}>Menu</Text>
 
       </TouchableOpacity>

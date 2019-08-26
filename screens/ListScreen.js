@@ -19,13 +19,11 @@ class EditScreen extends React.Component {
         //return (<View></View>)
         const { list } = this.props
         const { currentEditIndex } = this.props
-        const { currentEdit } = this.props
-
         const { editName } = this.state
         console.disableYellowBox = true;
         return (
             <View style={styles.mainContainer}>
-                <Text>Edit Screen</Text>
+                <Text style={styles.textTitle}>Edit Screen</Text>
                 <TextInput style={styles.inputText}
                     onChangeText={(editName) => this.setState({ editName })}
                     value={editName}
@@ -69,7 +67,9 @@ class EditScreen extends React.Component {
                                 this.props.chooseItem(index)
                                 this.setState({ editName: list[index].name })
                             }}>
-                            <Text>{item.name}</Text>
+                            <View style={styles.listItem}>
+                                <Text style={styles.textListItem}>{item.name}</Text>
+                            </View>
                         </TouchableOpacity>
                     }
                 >

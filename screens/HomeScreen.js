@@ -16,7 +16,7 @@ class HomeScreen extends React.Component {
 
         return (
                 <ScrollView style={styles.mainContainer}>
-                    <Text>Home Screen</Text>
+                    <Text style={styles.textTitle}>Home Screen</Text>
                 </ScrollView>
         );
     }
