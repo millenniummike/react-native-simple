@@ -73,7 +73,8 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     textTitle: {
-        fontSize:18
+        fontSize:18,
+        margin:8
     },
     textListItem: {
         color:"pink"
