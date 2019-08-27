@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
     mainContainer: {
         backgroundColor: '#000',
         margin:8,
-        paddingBottom: 80,
+        padding:8,
+        marginBottom: 180,
         backgroundColor: "yellow"
     },
     header: {
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
         bottom: 90,
         height: 130,
         width,
-        backgroundColor: 'brown'
+        backgroundColor: '#91f'
     },
 
     imageLogo: {
