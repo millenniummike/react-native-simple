@@ -4,14 +4,21 @@ export const CHOOSE_ITEM = 'app/CHOOSE_ITEM'
 export const UPDATE_ITEM = 'app/UPDATE_ITEM'
 export const CLEAR_LIST = 'app/CLEAR_LIST'
 export const DELETE_ITEM = 'app/DELETE_ITEM'
+export const TOGGLE_MENU = 'app/TOGGLE_MENU'
 
-export default function reducer(state = { showScreen:1, currentEditIndex:0, list:[], currentEdit:{} }, action) {
+export default function reducer(state = { showScreen:1, showMenu:false, currentEditIndex:0, list:[], currentEdit:{} }, action) {
   switch (action.type) {
 
       case SET_SCREEN:
         return {
           ...state,
           showScreen: action.data
+        };
+
+        case TOGGLE_MENU:
+        return {
+          ...state,
+          showMenu: !state.showMenu
         };
 
         case ADD_ITEM:
@@ -57,6 +64,12 @@ export function setScreen(value) {
   return {
     type: SET_SCREEN,
     data:value
+  };
+}
+
+export function toggleMenu(value) {
+  return {
+    type: TOGGLE_MENU
   };
 }
 

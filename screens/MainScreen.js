@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, ScrollView, } from 'react-native';
-import MenuScreen from './MenuScreen';
+import AnotherScreen from './AnotherScreen';
 import HomeScreen from './HomeScreen';
 import ListScreen from './ListScreen';
 
@@ -17,7 +17,7 @@ class MainScreen extends React.Component {
         switch (showScreen) {
             case 1: return <HomeScreen />;
             case 2: return <ListScreen />;
-            case 3: return <MenuScreen />;
+            case 3: return <AnotherScreen />;
             default: return <HomeScreen />;
         }
     }

@@ -6,6 +6,7 @@ import styles from './Styles';
 import MainScreen from "./screens/MainScreen";
 import Header from './components/Header';
 import Bottom from './components/Bottom';
+import Panel from './components/Panel';
 
 // Redux
 import { createStore, applyMiddleware } from 'redux';
@@ -38,6 +39,7 @@ export default class App extends React.Component {
           <SafeAreaView style={styles.container}>
             <Header />
             <MainScreen />
+            <Panel />
             <Bottom />
           </SafeAreaView>
         </PersistGate>

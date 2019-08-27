@@ -2,7 +2,7 @@ import styles from '../Styles';
 import { connect } from 'react-redux';
 import React from 'react';
 import { View, TouchableOpacity, Text, Image } from 'react-native';
-import { setScreen } from '../reducer';
+import { setScreen, toggleMenu } from '../reducer';
 
 class BottomTabs extends React.Component {
   constructor(props) {
@@ -31,6 +31,14 @@ class BottomTabs extends React.Component {
           this.props.setScreen(3);
         }}>
         <Image style={styles.imageBottomNav} source={require("../media/tab_menu.png")}></Image>
+        <Text style={styles.textBottomNav}>Another</Text>
+
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.buttonBottomNav}
+        onPress={() => {
+          this.props.toggleMenu();
+        }}>
+        <Image style={styles.imageBottomNav} source={require("../media/tab_menu.png")}></Image>
         <Text style={styles.textBottomNav}>Menu</Text>
 
       </TouchableOpacity>
@@ -43,7 +51,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  setScreen
+  setScreen, toggleMenu
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BottomTabs);

@@ -34,6 +34,15 @@ const styles = StyleSheet.create({
         backgroundColor: 'grey',
         flexDirection: 'row'
     },
+    panel: {
+        position: 'absolute',
+        padding:8,
+        bottom: 90,
+        height: 130,
+        width,
+        backgroundColor: 'brown'
+    },
+
     imageLogo: {
         width: 50,
         height: 50,
