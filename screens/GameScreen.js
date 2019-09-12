@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native';
 import styles from '../Styles';
 import { connect } from 'react-redux';
-import { getList } from '../reducer';
+import { getList2 } from '../reducer';
 
 class GameScreen extends React.Component {
     constructor(props) {
@@ -13,12 +13,12 @@ class GameScreen extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getList()
+        this.props.getList2()
     }
     render() {
-        const { list } = this.props
-        var mappedList = Object.keys(list).map(function(key) {
-            var game = list[key]
+        const { list2 } = this.props
+        var mappedList = Object.keys(list2).map(function(key) {
+            var game = list2[key]
             game.name = key
             return game
         })
@@ -34,7 +34,7 @@ class GameScreen extends React.Component {
                                 alert('button click')
                             }}>
                                 <View style={styles.listItem}>
-                                    <Image style={{width: 100, height: 70}} source={{uri: item.imageUrl}}/>
+                                    <Image style={{width: 100, height: 70}} source={{uri: 'https://a1s.unicdn.net/polopoly_fs/'+item.backgroundImageId+'!/image.png?width=250'}}/>
                                     <Text style={styles.textListItem}>{item.gameName}</Text>
                                 </View>
                             </TouchableOpacity>
@@ -52,7 +52,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    getList
+    getList2
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameScreen);

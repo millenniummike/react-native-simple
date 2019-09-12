@@ -3,7 +3,7 @@ import { View, ScrollView, Text, FlatList, TouchableOpacity, Image } from 'react
 
 import styles from '../Styles';
 import { connect } from 'react-redux';
-import { getList } from '../reducer';
+import { getList1 } from '../reducer';
 
 
 class HomeScreen extends React.Component {
@@ -12,7 +12,7 @@ class HomeScreen extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getList()
+        this.props.getList1()
     }
     render() {
         const { list } = this.props
@@ -66,7 +66,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    getList
+    getList1
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
