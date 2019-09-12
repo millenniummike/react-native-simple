@@ -1,9 +1,7 @@
 export const SET_SCREEN = 'app/SET_SCREEN'
-export const ADD_ITEM = 'app/ADD_ITEM'
-export const CHOOSE_ITEM = 'app/CHOOSE_ITEM'
-export const UPDATE_ITEM = 'app/UPDATE_ITEM'
-export const CLEAR_LIST = 'app/CLEAR_LIST'
-export const DELETE_ITEM = 'app/DELETE_ITEM'
+export const GET_LIST = 'app/GET_LIST'
+export const GET_LIST_SUCCESS = 'app/GET_LIST_SUCCESS'
+export const GET_LIST_FAILURE = 'app/GET_LIST_FAILURE'
 export const TOGGLE_MENU = 'app/TOGGLE_MENU'
 
 export default function reducer(state = { showScreen:1, showMenu:false, currentEditIndex:0, list:[], currentEdit:{} }, action) {
@@ -21,39 +19,16 @@ export default function reducer(state = { showScreen:1, showMenu:false, currentE
           showMenu: !state.showMenu
         };
 
-        case ADD_ITEM:
-        return {
-          ...state,
-          list: [...state.list, action.data]
-        };
-
-        case CLEAR_LIST:
-        return { showScreen:1, currentEditIndex:1, list:[] };
-
-        case CHOOSE_ITEM:
-        return { ...state,
-          currentEditIndex: action.data,
-          currentEdit: state.list[action.data]
-        };
-
-        case UPDATE_ITEM:
-            let updateList = state.list.map((item, index) => {
-              if(index === action.data.index) {
-                return {"name":action.data.name}
-              }
-              return item;
-            });
-          return { ...state, list: updateList };
-
-          case DELETE_ITEM:
-              let deleteList = state.list.filter((item, index) => {
-                if(index === action.data.index) {
-                  return false;
-                }
-                return true;
-              });
-
-            return { ...state, list: deleteList };
+        case GET_LIST:
+          return { ...state, loading: true };
+        case GET_LIST_SUCCESS:
+          return { ...state, loading: false, list: action.payload.data.games };
+        case GET_LIST_FAILURE:
+          return {
+            ...state,
+            loading: false,
+            errors: [...state.errors, 'Error while GET_LIST ' + action.error.message]
+          };
 
     default:
       return state;
@@ -73,37 +48,13 @@ export function toggleMenu(value) {
   };
 }
 
-export function addItem(value) {
+export function getList() {
   return {
-    type: ADD_ITEM,
-    data:value
-  };
-}
-
-export function deleteItem(value) {
-  return {
-    type: DELETE_ITEM,
-    data:value
-  };
-}
-
-
-export function chooseItem(value) {
-  return {
-    type: CHOOSE_ITEM,
-    data:value
-  };
-}
-
-export function updateItem(value) {
-  return {
-    type: UPDATE_ITEM,
-    data: value
-  };
-}
-
-export function clearList() {
-  return {
-    type: CLEAR_LIST
+    type: GET_LIST,
+    payload: {
+      request: {
+        url: `https://api-qa1.unibet.com/game-library-rest-api/games/getGamesByMarketAndDevice.json?jurisdiction=UK&brand=unibet&deviceGroup=mobilephone&locale=en_GB&currency=GBP&useGlobal=true&nrOfRows=20`
+      }
+    }
   };
 }

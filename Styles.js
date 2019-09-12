@@ -5,32 +5,45 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        backgroundColor: "green"
+        backgroundColor: "black"
     },
     main: {
         paddingBottom: 40,
         height,
         width,
-        backgroundColor: "red",
+        backgroundColor: "#030",
     },
     mainContainer: {
-        backgroundColor: '#000',
-        margin:8,
-        padding:8,
+        margin:2,
+        padding:2,
         marginBottom: 180,
-        backgroundColor: "yellow"
+        backgroundColor: "#020"
+    },
+    gridContainer: {
+        width, flex: 1, flexWrap:'wrap', flexDirection: 'row', margin: 5
+    },
+    carousel: {
+        margin: 2
     },
     header: {
-        backgroundColor: 'blue',
-        flexDirection: 'row',
-        width,
-        height: 70,
+        backgroundColor: '#080',
+        width:width,
+        height: 60,
         padding: 8,
+        flexDirection: 'row'
+    },
+    headerLeft: {
+        width:width*0.2
+    },
+    headerRight: {
+        width:width*0.75,
+        flexDirection: 'row',
+        justifyContent: 'flex-end'
     },
     bottom: {
         position: 'absolute',
         bottom: 0,
-        height: 80,
+        height: 70,
         width,
         backgroundColor: 'grey',
         flexDirection: 'row'
@@ -45,29 +58,45 @@ const styles = StyleSheet.create({
     },
 
     imageLogo: {
-        width: 50,
-        height: 50,
-        margin:4
+        width: 30,
+        height: 30,
+        margin:10
     },
     imageBottomNav:{
-        width:30,
-        height:30,
-        margin:2
+        width:20,
+        height:20,
+        margin:2,
+        tintColor:"white"
     },
     buttonTopNav: {
         padding: 4,
         margin:2,
+        marginLeft:12,
         width: 80,
-        height:40,
-        backgroundColor: "pink",
+        height:36,
+        backgroundColor: "green",
         textAlign:"center",
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        borderRadius:5,
+        borderWidth: 1
+    },
+    buttonTopNav2: {
+        padding: 4,
+        margin:2,
+        width: 80,
+        height:36,
+        backgroundColor: "yellow",
+        textAlign:"center",
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius:5,
+        borderWidth: 1
     },
     buttonBottomNav: {
         padding: 8,
         flex: 1,
-        backgroundColor: "orange",
+        backgroundColor: "black",
         textAlign:"center",
         justifyContent: 'center',
         alignItems: 'center'
@@ -84,15 +113,31 @@ const styles = StyleSheet.create({
     },
     textTitle: {
         fontSize:18,
-        margin:8
+        margin:10,
+        color:"white"
+    },
+    textBottomNav: {
+        fontSize:12,
+        margin:2,
+        color:"white"
     },
     textListItem: {
-        color:"pink"
+        color:"white",
+        fontSize:10
     },
     listItem: {
-        backgroundColor:"purple",
         margin:2,
-        padding:4
+        padding:4,
+        width:width/3.3,
+        height:90,
+        alignItems: 'center'
+    },
+    listItemBig: {
+        margin:2,
+        padding:2,
+        width:width/2,
+        height:120,
+        alignItems: 'center'
     },
     inputText: {
         backgroundColor:'white',
