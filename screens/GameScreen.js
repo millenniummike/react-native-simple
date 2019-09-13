@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, Image, TextInput } from 'react-native';
 import styles from '../Styles';
 import { connect } from 'react-redux';
-import { getList2 } from '../reducer';
+import { getList1, setScreen, setGame, displayMenu, applyFilterList1 } from '../reducer';
 
 class GameScreen extends React.Component {
     constructor(props) {
@@ -13,28 +13,34 @@ class GameScreen extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getList2()
+        this.props.getList1()
     }
     render() {
-        const { list2 } = this.props
-        var mappedList = Object.keys(list2).map(function(key) {
-            var game = list2[key]
-            game.name = key
-            return game
-        })
+        const { list } = this.props
+        const { filterList1 } = this.props
+        var filteredList = list.filter(function (str) {
+            return str.gameName.toLowerCase().indexOf(filterList1.toLowerCase()) !== -1;
+          })
         console.disableYellowBox = true;
         return (
             <View style={styles.mainContainer}>
-                <Text style={styles.textTitle}>Browse Games</Text> 
+                <Text style={styles.textTitle}>Browse Games</Text>
+                <TextInput
+                    style={styles.textInputSearch}
+                    onChangeText={text => this.props.applyFilterList1(text)}
+                    value={filterList1}
+                />
                 <View>
-                    <FlatList data={mappedList} contentContainerStyle={styles.gridContainer}
+                    <FlatList data={filteredList} numColumns="3" contentContainerStyle={styles.gridContainer}
                         renderItem={({ item, index }) => (
                             <TouchableOpacity
-                            onPress={() => {
-                                alert('button click')
-                            }}>
+                                onPress={() => {
+                                    this.props.setGame(item);
+                                    this.props.setScreen(6);
+                                    this.props.displayMenu(false);
+                                }}>
                                 <View style={styles.listItem}>
-                                    <Image style={{width: 100, height: 70}} source={{uri: 'https://a1s.unicdn.net/polopoly_fs/'+item.backgroundImageId+'!/image.png?width=250'}}/>
+                                    <Image style={{ width: 100, height: 70 }} source={{ uri: item.imageUrl }} />
                                     <Text style={styles.textListItem}>{item.gameName}</Text>
                                 </View>
                             </TouchableOpacity>
@@ -52,7 +58,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    getList2
+    getList1, setScreen, displayMenu, setGame, applyFilterList1
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameScreen);

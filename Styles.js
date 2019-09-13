@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions, Platform } from 'react-native';
+import { whileStatement } from '@babel/types';
 const { width, height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#020"
     },
     gridContainer: {
-        width, flex: 1, flexWrap:'wrap', flexDirection: 'row', margin: 5
+        width, margin: 5
     },
     carousel: {
         margin: 2
@@ -52,9 +53,9 @@ const styles = StyleSheet.create({
         position: 'absolute',
         padding:8,
         bottom: 90,
-        height: 130,
+        height: 120,
         width,
-        backgroundColor: '#91f'
+        backgroundColor: 'black'
     },
 
     imageLogo: {
@@ -68,11 +69,36 @@ const styles = StyleSheet.create({
         margin:2,
         tintColor:"white"
     },
+    imageGameHeader:{
+        width,
+        height:200,
+        resizeMode:"cover"  
+    },
+    textGameTitle:{
+        color:"white",
+        margin:8
+    },
+    textInputSearch:{
+        height: 40, padding:8, borderColor: 'gray', borderWidth: 1, color:'white'
+    },
     buttonTopNav: {
         padding: 4,
         margin:2,
         marginLeft:12,
         width: 80,
+        height:36,
+        backgroundColor: "green",
+        textAlign:"center",
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius:5,
+        borderWidth: 1
+    },
+    buttonBig: {
+        padding: 4,
+        margin:2,
+        marginLeft:12,
+        width:width*0.9,
         height:36,
         backgroundColor: "green",
         textAlign:"center",

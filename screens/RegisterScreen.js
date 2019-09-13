@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import styles from '../Styles';
 
-class AnotherScreen extends React.Component {
+class RegisterScreen extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -10,10 +10,10 @@ class AnotherScreen extends React.Component {
         console.disableYellowBox = true;
         return (
             <View style={styles.mainContainer}>
-                <Text style={styles.textTitle}>Location Blocked</Text>
+                <Text style={styles.textTitle}>Register Screen</Text>
             </View>
         );
     }
 }
 
-export default AnotherScreen;
+export default RegisterScreen;
