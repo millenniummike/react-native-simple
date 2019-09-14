@@ -4,7 +4,7 @@ import { View, ScrollView, Text, FlatList, TouchableOpacity, Image } from 'react
 import styles from '../Styles';
 import { connect } from 'react-redux';
 import { getList1, setScreen, displayMenu, setGame} from '../reducer';
-
+import { SCREEN_PRE_GAME } from '../reducer'
 
 class HomeScreen extends React.Component {
     constructor(props) {
@@ -14,6 +14,7 @@ class HomeScreen extends React.Component {
     componentDidMount() {
         this.props.getList1()
     }
+    
     render() {
         const { list } = this.props
         console.disableYellowBox = true;
@@ -26,7 +27,7 @@ class HomeScreen extends React.Component {
                             <TouchableOpacity
                             onPress={() => {
                                 this.props.setGame(item);
-                                this.props.setScreen(6);
+                                this.props.setScreen(SCREEN_PRE_GAME);
                                 this.props.displayMenu(false);
                             }}>
                                 <View style={styles.listItemBig}>
@@ -44,7 +45,7 @@ class HomeScreen extends React.Component {
                             <TouchableOpacity
                             onPress={() => {
                                 this.props.setGame(item);
-                                this.props.setScreen(6);
+                                this.props.setScreen(SCREEN_PRE_GAME);
                                 this.props.displayMenu(false);
                             }}>
                                 <View style={styles.listItem}>

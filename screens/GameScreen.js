@@ -2,7 +2,8 @@ import React from 'react';
 import { View, Text, FlatList, TouchableOpacity, Image, TextInput } from 'react-native';
 import styles from '../Styles';
 import { connect } from 'react-redux';
-import { getList1, setScreen, setGame, displayMenu, applyFilterList1 } from '../reducer';
+import { getList1, setScreen, setGame, displayMenu, applyFilterList1, displayFilterPanel } from '../reducer';
+import { SCREEN_PRE_GAME } from '../reducer'
 
 class GameScreen extends React.Component {
     constructor(props) {
@@ -30,13 +31,19 @@ class GameScreen extends React.Component {
                     onChangeText={text => this.props.applyFilterList1(text)}
                     value={filterList1}
                 />
+                <TouchableOpacity
+                    onPress={() => {
+                        this.props.displayFilterPanel(true);
+                    }}>
+                    <Text style={styles.textListItem}>Show Filter Panel</Text>
+                </TouchableOpacity>
                 <View>
                     <FlatList data={filteredList} numColumns="3" contentContainerStyle={styles.gridContainer}
                         renderItem={({ item, index }) => (
                             <TouchableOpacity
                                 onPress={() => {
                                     this.props.setGame(item);
-                                    this.props.setScreen(6);
+                                    this.props.setScreen(SCREEN_PRE_GAME);
                                     this.props.displayMenu(false);
                                 }}>
                                 <View style={styles.listItem}>
@@ -58,7 +65,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    getList1, setScreen, displayMenu, setGame, applyFilterList1
+    getList1, setScreen, displayMenu, setGame, applyFilterList1, displayFilterPanel
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameScreen);

@@ -3,6 +3,7 @@ import { View, Image, Text, TouchableOpacity } from "react-native";
 import styles from '../Styles';
 import { setScreen, toggleMenu } from '../reducer';
 import { connect } from 'react-redux';
+import { SCREEN_LOGIN, SCREEN_REGISTER } from '../reducer'
 
 class Header extends React.Component {
   constructor(props) {
@@ -25,11 +26,11 @@ class Header extends React.Component {
       </View>
          :
          <View style={styles.headerRight}>
-          <TouchableOpacity onPress={() => this.props.setScreen(4)}
+          <TouchableOpacity onPress={() => this.props.setScreen(SCREEN_REGISTER)}
             style={styles.buttonTopNav2}>
             <Text style={{ color: "black" }}>Register</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.props.setScreen(3)}
+          <TouchableOpacity onPress={() => this.props.setScreen(SCREEN_LOGIN)}
             style={styles.buttonTopNav}>
             <Text style={{ color: "white" }}>Log In</Text>
           </TouchableOpacity>

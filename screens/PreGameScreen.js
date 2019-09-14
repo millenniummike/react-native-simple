@@ -3,8 +3,9 @@ import { View, Text, Image, TouchableOpacity, FlatList } from 'react-native';
 import styles from '../Styles';
 import { connect } from 'react-redux';
 import { setScreen, getList1, displayMenu, setGame} from '../reducer';
+import { SCREEN_LOGIN, SCREEN_PLAYING_GAME } from '../reducer'
 
-class PlayGameScreen extends React.Component {
+class PreGameScreen extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -15,6 +16,7 @@ class PlayGameScreen extends React.Component {
         const { game } = this.props
         const { loggedIn } = this.props
         const { list } = this.props
+        const { previousScreen } = this.props
         var mappedList = Object.keys(list).map(function (key) {
             var game = list[key]
             game.name = key
@@ -25,15 +27,23 @@ class PlayGameScreen extends React.Component {
             <View style={styles.mainContainer}>
                 {game ?
                     <View>
+                        <TouchableOpacity onPress={() => {
+                                this.props.setScreen(previousScreen)
+                            }}
+                                style={styles.button}>
+                                <Text style={{ color: "white" }}>Back</Text>
+                            </TouchableOpacity>
                         <Image style={styles.imageGameHeader} source={{uri: game.imageUrl}}/>
                         <Text style={styles.textGameTitle}>{game.gameName}</Text>
                         {!loggedIn ?
-                            <TouchableOpacity onPress={() => this.props.setScreen(3)}
+                            <TouchableOpacity onPress={() => {
+                                this.props.setScreen(SCREEN_LOGIN )
+                            }}
                                 style={styles.buttonBig}>
                                 <Text style={{ color: "white" }}>Log In To Play</Text>
                             </TouchableOpacity>
                             :
-                            <TouchableOpacity onPress={() => this.props.setScreen(3)}
+                            <TouchableOpacity onPress={() => this.props.setScreen(SCREEN_PLAYING_GAME)}
                                 style={styles.buttonBig}>
                                 <Text style={{ color: "white" }}>Play</Text>
                             </TouchableOpacity>
@@ -51,7 +61,6 @@ class PlayGameScreen extends React.Component {
                             <TouchableOpacity
                                 onPress={() => {
                                     this.props.setGame(item);
-                                    this.props.setScreen(6);
                                     this.props.displayMenu(false);
                                 }}>
                                 <View style={styles.listItem}>
@@ -76,4 +85,4 @@ const mapDispatchToProps = {
     setScreen, getList1, displayMenu, setGame
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlayGameScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(PreGameScreen);

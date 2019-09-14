@@ -8,6 +8,7 @@ import MainScreen from "./screens/MainScreen";
 import Header from './components/Header';
 import Bottom from './components/Bottom';
 import Panel from './components/Panel';
+import PanelFilter from './components/PanelFilter';
 
 // API
 import axios from 'axios';
@@ -37,6 +38,7 @@ export default class App extends React.Component {
             <Header />
             <MainScreen />
             <Panel />
+            <PanelFilter />
             <Bottom />
           </SafeAreaView>
       </Provider>

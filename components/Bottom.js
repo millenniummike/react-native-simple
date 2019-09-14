@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import React from 'react';
 import { View, TouchableOpacity, Text, Image } from 'react-native';
 import { setScreen, toggleMenu, displayMenu } from '../reducer';
+import { SCREEN_HOME, SCREEN_GAME } from '../reducer'
 
 class BottomTabs extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class BottomTabs extends React.Component {
     return <View style={styles.bottom}>
       <TouchableOpacity style={styles.buttonBottomNav}
         onPress={() => {
-          this.props.setScreen(1);
+          this.props.setScreen(SCREEN_HOME);
           this.props.displayMenu(false);
         }}>
         <Image style={styles.imageBottomNav} source={require("../media/tab_home.png")}></Image>
@@ -21,7 +22,7 @@ class BottomTabs extends React.Component {
       </TouchableOpacity>
       <TouchableOpacity style={styles.buttonBottomNav}
         onPress={() => {
-          this.props.setScreen(2);
+          this.props.setScreen(SCREEN_GAME);
           this.props.displayMenu(false);
         }}>
         <Image style={styles.imageBottomNav} source={require("../media/tab_list.png")}></Image>

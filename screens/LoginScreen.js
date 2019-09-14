@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import styles from '../Styles';
 import { connect } from 'react-redux';
 import { setScreen, login } from '../reducer';
@@ -10,9 +10,19 @@ class LoginScreen extends React.Component {
     }
     render() {
         console.disableYellowBox = true;
+        var name='fred'
+        var password='password'
         return (
             <View style={styles.mainContainer}>
                 <Text style={styles.textTitle}>Login Screen</Text>
+                <TextInput
+                    style={styles.textInputSearch}
+                    value={name}
+                />
+                <TextInput
+                    style={styles.textInputSearch}
+                    value={password}
+                />
                 <TouchableOpacity style={styles.buttonTopNav} onPress={() => {
                     this.props.login("name","password")
                     }}>

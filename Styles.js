@@ -57,7 +57,15 @@ const styles = StyleSheet.create({
         width,
         backgroundColor: 'black'
     },
-
+    panelFilter: {
+        position: 'absolute',
+        padding:8,
+        top:120,
+        left:width/2,
+        height: 200,
+        width:width/2,
+        backgroundColor: 'black'
+    },
     imageLogo: {
         width: 30,
         height: 30,

@@ -5,12 +5,15 @@ import LoginScreen from './LoginScreen';
 import RegisterScreen from './RegisterScreen';
 import HomeScreen from './HomeScreen';
 import GameScreen from './GameScreen';
-import PlayGameScreen from './PlayGameScreen';
+import PreGameScreen from './PreGameScreen';
 import PostLoginForm1 from './PostLoginForm1';
 import PostLoginForm2 from './PostLoginForm2';
+import PlayingGameScreen from './PlayingGameScreen'
 
 import styles from '../Styles';
 import { connect } from 'react-redux';
+
+import { SCREEN_HOME, SCREEN_PLAYING_GAME, SCREEN_GEOBLOCKED, SCREEN_GAME, SCREEN_PRE_GAME, SCREEN_LOGIN, SCREEN_POSTLOGIN_FORM1, SCREEN_POSTLOGIN_FORM2, SCREEN_REGISTER } from '../reducer'
 
 class MainScreen extends React.Component {
     constructor(props) {
@@ -20,14 +23,15 @@ class MainScreen extends React.Component {
     renderScreen(){
         const {showScreen} = this.props
         switch (showScreen) {
-            case 1: return <HomeScreen />;
-            case 2: return <GameScreen />;
-            case 3: return <LoginScreen />;
-            case 4: return <RegisterScreen />;
-            case 5: return <AnotherScreen />;
-            case 6: return <PlayGameScreen />;
-            case 7: return <PostLoginForm1 />;
-            case 8: return <PostLoginForm2 />;
+            case SCREEN_HOME: return <HomeScreen />;
+            case SCREEN_GAME: return <GameScreen />;
+            case SCREEN_LOGIN: return <LoginScreen />;
+            case SCREEN_REGISTER: return <RegisterScreen />;
+            case SCREEN_PRE_GAME: return <PreGameScreen />;
+            case SCREEN_POSTLOGIN_FORM1: return <PostLoginForm1 />;
+            case SCREEN_POSTLOGIN_FORM2: return <PostLoginForm2 />;
+            case SCREEN_GEOBLOCKED: return <AnotherScreen />;
+            case SCREEN_PLAYING_GAME: return <PlayingGameScreen />;
             default: return <HomeScreen />;
         }
     }

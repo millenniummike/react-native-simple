@@ -10,9 +10,10 @@ class Panel extends React.Component {
     }
     render() {
         const { showMenu } = this.props
+        const { showMenuBlocked } = this.props
         const { loggedIn } = this.props
 
-        if (showMenu) {
+        if (showMenu && !showMenuBlocked) {
             return <ScrollView style={styles.panel}>
                 <Text style={{ color: "white", fontSize:16, marginBottom:4}}>Menu</Text>
                 <TouchableOpacity onPress={() => {
@@ -20,24 +21,6 @@ class Panel extends React.Component {
                     this.props.toggleMenu()
                     }}>
                     <Text style={{ color: "white" }}>Home</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => {
-                    this.props.setScreen(2)
-                    this.props.toggleMenu()
-                    }}>
-                    <Text style={{ color: "white" }}>Browse Games</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => {
-                    this.props.setScreen(2)
-                    this.props.toggleMenu()
-                    }}>
-                    <Text style={{ color: "white" }}>Browse Games</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => {
-                    this.props.setScreen(2)
-                    this.props.toggleMenu()
-                    }}>
-                    <Text style={{ color: "white" }}>Browse Games</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => {
                     this.props.setScreen(2)

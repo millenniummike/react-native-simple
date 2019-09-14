@@ -7,6 +7,7 @@ export const GET_LIST2_SUCCESS = 'app/GET_LIST2_SUCCESS'
 export const GET_LIST2_FAILURE = 'app/GET_LIST2_FAILURE'
 export const TOGGLE_MENU = 'app/TOGGLE_MENU'
 export const DISPLAY_MENU = 'app/DISPLAY_MENU'
+export const DISPLAY_FILTER_PANEL = 'app/DISPLAY_FILTER_PANEL'
 export const LOGIN = 'app/LOGIN'
 export const SET_LOGGEDIN = 'app/SET_LOGGEDIN'
 export const LOGIN_SUCCESS = 'app/LOGIN_SUCCESS'
@@ -15,25 +16,52 @@ export const SET_POSTLOGIN1 = 'app/SET_POSTLOGIN1'
 export const SET_POSTLOGIN2 = 'app/SET_POSTLOGIN2'
 export const SET_GAME = 'app/SET_GAME'
 export const APPLY_FILTER_LIST1 = 'app/APPLY_FILTER_LIST1'
+export const SCREEN_HOME = 'app/SCREEN_HOME'
+export const SCREEN_GAME = 'app/SCREEN_GAME'
+export const SCREEN_PRE_GAME = 'app/SCREEN_PRE_GAME'
+export const SCREEN_LOGIN = 'app/SCREEN_LOGIN'
+export const SCREEN_PLAY_GAME = 'app/SCREEN_PLAY_GAME'
+export const SCREEN_POSTLOGIN_FORM1 = 'app/SCREEN_POSTLOGIN_FORM1'
+export const SCREEN_POSTLOGIN_FORM2 = 'app/SCREEN_POSTLOGIN_FORM2'
+export const SCREEN_REGISTER = 'app/SCREEN_REGISTER'
+export const SCREEN_GEOBLOCKED = 'app/SCREEN_GEOBLOCKED'
+export const SET_BLOCK_MENU = 'app/SET_BLOCK_MENU'
 
-export default function reducer(state = { showScreen: 2, game: null, loggedIn: false, postLogin2: true, postLogin1: true, showMenu: false, filterValue:"", filterList1: "", filterList2: "", list: [], list2: [] }, action) {
+export default reducer
+
+function reducer(state = {
+  previousScreen: null,
+  showScreen: SCREEN_HOME, 
+  game: null, 
+  loggedIn: false, 
+  postLogin2: true, 
+  postLogin1: true, 
+  showMenuBlocked:false, 
+  showMenu: false, 
+  showFilterPanel:false, 
+  filterValue:"", 
+  filterList1: "", 
+  filterList2: "", 
+  list: [], 
+  list2: [] 
+}, action) {
   switch (action.type) {
     case SET_SCREEN:
       if (state.postLogin1 && state.loggedIn == true) {
         return {
           ...state,
-          showScreen: 7
+          showScreen: SCREEN_POSTLOGIN_FORM1
         };
       }
 
       if (state.postLogin2 && state.loggedIn == true) {
         return {
           ...state,
-          showScreen: 8
+          showScreen: SCREEN_POSTLOGIN_FORM2
         };
       }
 
-      if (state.showScreen == 5) {
+      if (state.showScreen == SCREEN_GEOBLOCKED) {
         return state
       }
 
@@ -45,7 +73,8 @@ export default function reducer(state = { showScreen: 2, game: null, loggedIn: f
     case SET_GAME:
       return {
         ...state,
-        game: action.data
+        game: action.data,
+        previousScreen: state.showScreen,
       };
 
     case SET_POSTLOGIN1:
@@ -70,12 +99,12 @@ export default function reducer(state = { showScreen: 2, game: null, loggedIn: f
       return { ...state, loading: true };
 
       case LOGIN_SUCCESS:
-        var screen = 1
+        var screen = state.previousScreen
           if (state.postLogin2) {
-            screen = 8
+            screen = SCREEN_POSTLOGIN_FORM2
           }
           if (state.postLogin1) {
-            screen = 7
+            screen = SCREEN_POSTLOGIN_FORM1
           }
 
       return {
@@ -94,6 +123,18 @@ export default function reducer(state = { showScreen: 2, game: null, loggedIn: f
       return {
         ...state,
         showMenu: action.data
+      };
+    
+    case DISPLAY_FILTER_PANEL:
+      return {
+        ...state,
+        showFilterPanel: action.data
+      };
+    
+    case SET_BLOCK_MENU:
+      return {
+        ...state,
+        showMenuBlocked: action.data
       };
 
     case GET_LIST1:
@@ -183,6 +224,21 @@ export function displayMenu(value) {
     data: value
   };
 }
+
+export function displayFilterPanel(value) {
+  return {
+    type: DISPLAY_FILTER_PANEL,
+    data: value
+  };
+}
+
+export function setMenuBlocked(value) {
+  return {
+    type: SET_BLOCK_MENU,
+    data: value
+  };
+}
+
 export function getList1() {
   return {
     type: GET_LIST1,
