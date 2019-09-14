@@ -43,7 +43,8 @@ function reducer(state = {
   filterList1: "", 
   filterList2: "", 
   list: [], 
-  list2: [] 
+  list2: [],
+  websocketMessage:""
 }, action) {
   switch (action.type) {
     case SET_SCREEN:
@@ -162,6 +163,12 @@ function reducer(state = {
         errors: [...state.errors, 'Error while GET_LIST ' + action.error.message]
       };
 
+    case 'REDUX_WEBSOCKET::MESSAGE':
+      return {
+        ...state,
+        websocketMessage:action.payload.message
+      }
+
     default:
       return state;
   }
@@ -206,7 +213,7 @@ export function login(username, password) {
     type: LOGIN,
     payload: {
       request: {
-        url: `http://10.96.26.241:8080/login_success.json`
+        url: `http://localhost:8080/login_success.json`
       }
     }
   };

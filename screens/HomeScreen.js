@@ -17,6 +17,7 @@ class HomeScreen extends React.Component {
     
     render() {
         const { list } = this.props
+        const { websocketMessage } = this.props
         console.disableYellowBox = true;
 
         return (

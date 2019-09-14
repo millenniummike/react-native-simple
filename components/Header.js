@@ -11,6 +11,7 @@ class Header extends React.Component {
   }
   render() {
     const { loggedIn } = this.props
+    const { websocketMessage } = this.props
     console.log(loggedIn)
     return (
       <View style={styles.header}>
@@ -21,8 +22,8 @@ class Header extends React.Component {
         </View>
         { loggedIn ?
         <View style={styles.headerRight}>
-          <Text style={{ color: "black" }}>Balance</Text>
-          <Text style={{ color: "white" }}> £333.00</Text>
+          <Text style={{ color: "black" }}>Balance:</Text>
+          <Text style={{ color: "white" }}>£{websocketMessage}</Text>
       </View>
          :
          <View style={styles.headerRight}>

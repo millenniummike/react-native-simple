@@ -14,6 +14,9 @@ import PanelFilter from './components/PanelFilter';
 import axios from 'axios';
 import axiosMiddleware from 'redux-axios-middleware';
 
+import reduxWebsocket from '@giantmachines/redux-websocket';
+const reduxWebsocketMiddleware = reduxWebsocket();
+
 // Redux
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
@@ -25,7 +28,9 @@ const client = axios.create({
   responseType: 'json'
 });
 
-const store = createStore(reducer, applyMiddleware(axiosMiddleware(client), logger));
+const store = createStore(reducer, applyMiddleware(axiosMiddleware(client), reduxWebsocketMiddleware, logger));
+import { connect } from '@giantmachines/redux-websocket';
+store.dispatch(connect('ws://localhost:9000'));
 
 export default class App extends React.Component {
   constructor(props) {
