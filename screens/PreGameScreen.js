@@ -1,9 +1,10 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, FlatList } from 'react-native';
+import FastImage from 'react-native-fast-image'
 import styles from '../Styles';
 import { connect } from 'react-redux';
-import { setScreen, getList1, displayMenu, setGame} from '../reducer';
-import { SCREEN_LOGIN, SCREEN_PLAYING_GAME } from '../reducer'
+import { setScreen, getList1, displayMenu, setGame, applyFilterList1} from '../reducer';
+import { SCREEN_LOGIN, SCREEN_PLAYING_GAME, SCREEN_GAME } from '../reducer'
 
 class PreGameScreen extends React.Component {
     constructor(props) {
@@ -33,7 +34,7 @@ class PreGameScreen extends React.Component {
                                 style={styles.button}>
                                 <Text style={{ color: "white" }}>Back</Text>
                             </TouchableOpacity>
-                        <Image style={styles.imageGameHeader} source={{uri: game.imageUrl}}/>
+                        <FastImage style={styles.imageGameHeader} source={{uri: game.imageUrl}}/>
                         <Text style={styles.textGameTitle}>{game.gameName}</Text>
                         {!loggedIn ?
                             <TouchableOpacity onPress={() => {
@@ -55,6 +56,25 @@ class PreGameScreen extends React.Component {
                     </View>
                 }
                 <View>
+                    <Text style={styles.textTitle}>Tags</Text>
+                    {game.tags ?
+                        <FlatList numColumns="4" data={game.tags} contentContainerStyle={styles.x}
+                        renderItem={({ item, index }) => (
+                            <TouchableOpacity
+                                style={styles.buttonTag}
+                                onPress={() => {
+                                    this.props.setScreen(SCREEN_GAME);
+                                    this.props.applyFilterList1(item)
+                                    this.props.displayMenu(false);
+                                }}>
+                                    <Text style={styles.textListItem}>{item}</Text>
+                            </TouchableOpacity>
+                        )}
+                    >
+                    </FlatList>
+                    :
+                        <Text style={styles.textGameTitle}>No tags</Text>
+                        }
                     <Text style={styles.textTitle}>Recommended For You</Text>
                     <FlatList data={mappedList} horizontal={true} contentContainerStyle={styles.carousel}
                         renderItem={({ item, index }) => (
@@ -64,7 +84,7 @@ class PreGameScreen extends React.Component {
                                     this.props.displayMenu(false);
                                 }}>
                                 <View style={styles.listItem}>
-                                    <Image style={{ width: 100, height: 70 }} source={{ uri: item.imageUrl }} />
+                                    <FastImage style={{ width: 100, height: 70 }} source={{ uri: item.imageUrl }} />
                                     <Text style={styles.textListItem}>{item.gameName}</Text>
                                 </View>
                             </TouchableOpacity>
@@ -82,7 +102,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    setScreen, getList1, displayMenu, setGame
+    setScreen, getList1, displayMenu, setGame, applyFilterList1
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PreGameScreen);

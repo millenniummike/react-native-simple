@@ -4,6 +4,7 @@ import styles from '../Styles';
 import { setScreen, toggleMenu } from '../reducer';
 import { connect } from 'react-redux';
 import { SCREEN_LOGIN, SCREEN_REGISTER } from '../reducer'
+import { theme } from '../Styles'
 
 class Header extends React.Component {
   constructor(props) {
@@ -16,13 +17,19 @@ class Header extends React.Component {
     return (
       <View style={styles.header}>
         <View style={styles.headerLeft}>
+          { theme == "Maria" ? 
           <Image style={styles.imageLogo}
-            source={require('../media/logo.png')}
+            source={require('../media/mariaLogo.png')}
           />
+          :
+          <Image style={styles.imageLogo}
+            source={require('../media/unibetLogo.png')}
+          />
+          }
         </View>
         { loggedIn ?
         <View style={styles.headerRight}>
-          <Text style={{ color: "black" }}>Balance:</Text>
+          <Text style={{ color: "white" }}>Balance:</Text>
           <Text style={{ color: "white" }}>£{websocketMessage}</Text>
       </View>
          :

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, ScrollView, Text, FlatList, TouchableOpacity, Image } from 'react-native';
-
+import FastImage from 'react-native-fast-image'
 import styles from '../Styles';
 import { connect } from 'react-redux';
 import { getList1, setScreen, displayMenu, setGame} from '../reducer';
@@ -17,7 +17,17 @@ class HomeScreen extends React.Component {
     
     render() {
         const { list } = this.props
-        const { websocketMessage } = this.props
+        const filteredList1 = list.filter(function (str) {
+            return str.tags.indexOf("tableandcards") >= 0
+          })
+
+        const filteredList2 = list.filter(function (str) {
+            return str.tags.indexOf("animals") >= 0
+          })
+
+          const filteredList3 = list.filter(function (str) {
+            return str.tags.indexOf("live") >= 0
+          })
         console.disableYellowBox = true;
 
         return (
@@ -31,8 +41,8 @@ class HomeScreen extends React.Component {
                                 this.props.setScreen(SCREEN_PRE_GAME);
                                 this.props.displayMenu(false);
                             }}>
-                                <View style={styles.listItemBig}>
-                                    <Image style={{width: 170, height: 110}} source={{uri: item.imageUrl}}/>
+                                <View style={styles.listItemCarousel}>
+                                    <Image style={styles.listItemCarousel} source={{uri: item.imageUrl}}/>
                                     <Text style={styles.textListItem}>{item.gameName}</Text>
                                 </View>
                             </TouchableOpacity>
@@ -41,7 +51,7 @@ class HomeScreen extends React.Component {
                     </FlatList>
 
                     <Text style={styles.textTitle}>Unibet Picks</Text>
-                    <FlatList data={list} horizontal={true} contentContainerStyle={styles.carousel}
+                    <FlatList data={filteredList2} horizontal={true} contentContainerStyle={styles.carousel}
                         renderItem={({ item, index }) => (
                             <TouchableOpacity
                             onPress={() => {
@@ -50,7 +60,42 @@ class HomeScreen extends React.Component {
                                 this.props.displayMenu(false);
                             }}>
                                 <View style={styles.listItem}>
-                                    <Image style={{width: 100, height: 70}} source={{uri: item.imageUrl}}/>
+                                    <FastImage style={{width: 100, height: 70}} source={{uri: item.imageUrl}}/>
+                                    <Text style={styles.textListItem}>{item.gameName}</Text>
+                                </View>
+                            </TouchableOpacity>
+                        )}
+                    >
+                    </FlatList>
+                    <Text style={styles.textTitle}>New Games</Text>
+                    <FlatList data={filteredList3} horizontal={true} contentContainerStyle={styles.carousel}
+                        renderItem={({ item, index }) => (
+                            <TouchableOpacity
+                            onPress={() => {
+                                this.props.setGame(item);
+                                this.props.setScreen(SCREEN_PRE_GAME);
+                                this.props.displayMenu(false);
+                            }}>
+                                <View style={styles.listItemBig}>
+                                    <FastImage style={{width: 170, height: 110}} source={{uri: item.imageUrl}}/>
+                                    <Text style={styles.textListItem}>{item.gameName}</Text>
+                                </View>
+                            </TouchableOpacity>
+                        )}
+                    >
+                    </FlatList>
+
+                    <Text style={styles.textTitle}>Table and Cards</Text>
+                    <FlatList data={filteredList1} horizontal={true} contentContainerStyle={styles.carousel}
+                        renderItem={({ item, index }) => (
+                            <TouchableOpacity
+                            onPress={() => {
+                                this.props.setGame(item);
+                                this.props.setScreen(SCREEN_PRE_GAME);
+                                this.props.displayMenu(false);
+                            }}>
+                                <View style={styles.listItem}>
+                                    <FastImage style={{width: 100, height: 70}} source={{uri: item.imageUrl}}/>
                                     <Text style={styles.textListItem}>{item.gameName}</Text>
                                 </View>
                             </TouchableOpacity>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, FlatList, TouchableOpacity, Image, TextInput } from 'react-native';
+import FastImage from 'react-native-fast-image'
 import styles from '../Styles';
 import { connect } from 'react-redux';
 import { getList1, setScreen, setGame, displayMenu, applyFilterList1, displayFilterPanel } from '../reducer';
@@ -19,13 +20,22 @@ class GameScreen extends React.Component {
     render() {
         const { list } = this.props
         const { filterList1 } = this.props
-        var filteredList = list.filter(function (str) {
-            return str.gameName.toLowerCase().indexOf(filterList1.toLowerCase()) !== -1;
+        const { previousScreen } = this.props
+          var filteredList = list.filter(function (str) {
+            var keyword = filterList1.toLowerCase()
+            if (keyword=="") return true
+            return str.tags.indexOf(keyword) >= 0
           })
         console.disableYellowBox = true;
         return (
             <View style={styles.mainContainer}>
-                <Text style={styles.textTitle}>Browse Games</Text>
+                <TouchableOpacity onPress={() => {
+                                this.props.setScreen(previousScreen)
+                            }}
+                                style={styles.button}>
+                                <Text style={{ color: "white" }}>Back</Text>
+                            </TouchableOpacity>
+                <Text style={styles.textTitle}>Browse Games ({filteredList.length})</Text>
                 <TextInput
                     style={styles.textInputSearch}
                     onChangeText={text => this.props.applyFilterList1(text)}
@@ -47,7 +57,7 @@ class GameScreen extends React.Component {
                                     this.props.displayMenu(false);
                                 }}>
                                 <View style={styles.listItem}>
-                                    <Image style={{ width: 100, height: 70 }} source={{ uri: item.imageUrl }} />
+                                    <FastImage style={{ width: 100, height: 70 }} source={{ uri: item.imageUrl }} />
                                     <Text style={styles.textListItem}>{item.gameName}</Text>
                                 </View>
                             </TouchableOpacity>

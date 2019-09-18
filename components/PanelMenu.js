@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import React from 'react';
 import { ScrollView, View, TouchableOpacity, Text } from 'react-native';
 import { setScreen, toggleMenu, setLoggedIn} from '../reducer';
-
+import { SCREEN_HOME, SCREEN_GAME, SCREEN_REGISTER } from '../reducer'
 class Panel extends React.Component {
     constructor(props) {
         super(props);
@@ -17,13 +17,13 @@ class Panel extends React.Component {
             return <ScrollView style={styles.panel}>
                 <Text style={{ color: "white", fontSize:16, marginBottom:4}}>Menu</Text>
                 <TouchableOpacity onPress={() => {
-                    this.props.setScreen(1)
+                    this.props.setScreen(SCREEN_HOME)
                     this.props.toggleMenu()
                     }}>
                     <Text style={{ color: "white" }}>Home</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => {
-                    this.props.setScreen(2)
+                    this.props.setScreen(SCREEN_GAME)
                     this.props.toggleMenu()
                     }}>
                     <Text style={{ color: "white" }}>Browse Games</Text>
@@ -32,13 +32,13 @@ class Panel extends React.Component {
                 { loggedIn ?
                 <View>
                     <TouchableOpacity onPress={() => {
-                        this.props.setScreen(1)
+                        this.props.setScreen(SCREEN_REGISTER)
                         this.props.toggleMenu()
                         }}>
                         <Text style={{ color: "white" }}>Exciting Loggedin Feature1</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
-                        this.props.setScreen(1)
+                        this.props.setScreen(SCREEN_HOME)
                         this.props.toggleMenu()
                         this.props.setLoggedIn(false)
                         }}>

@@ -26,6 +26,7 @@
     "eslint": "^6.2.2",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.0",
+    "react-native-fast-image": "^7.0.2",
     "react-test-renderer": "16.8.6",
     "redux-axios-middleware": "^4.0.1"
   },

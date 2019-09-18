@@ -30,7 +30,7 @@ export const SET_BLOCK_MENU = 'app/SET_BLOCK_MENU'
 export default reducer
 
 function reducer(state = {
-  previousScreen: null,
+  previousScreen: [SCREEN_HOME],
   showScreen: SCREEN_HOME, 
   game: null, 
   loggedIn: false, 
@@ -75,7 +75,7 @@ function reducer(state = {
       return {
         ...state,
         game: action.data,
-        previousScreen: state.showScreen,
+        previousScreen: state.previousScreen.concat(state.showScreen)
       };
 
     case SET_POSTLOGIN1:
@@ -251,7 +251,7 @@ export function getList1() {
     type: GET_LIST1,
     payload: {
       request: {
-        url: `https://www.unibet.com/game-library-rest-api/games/getGamesByMarketAndDevice.json?jurisdiction=UK&brand=unibet&deviceGroup=mobilephone&locale=en_GB&currency=GBP&useGlobal=true&nrOfRows=200`
+        url: `https://www.unibet.com/game-library-rest-api/games/getGamesByMarketAndDevice.json?jurisdiction=UK&brand=unibet&deviceGroup=mobilephone&locale=en_GB&currency=GBP&useGlobal=true&nrOfRows=800`
       }
     }
   };

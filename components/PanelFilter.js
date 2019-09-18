@@ -22,16 +22,34 @@ class PanelFilter extends React.Component {
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => {
-                    this.props.applyFilterList1('Star')
+                    this.props.applyFilterList1('')
                     this.props.displayFilterPanel(false);
                 }}>
-                    <Text style={{ color: "white" }}>Star</Text>
+                    <Text style={{ color: "white" }}>All</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => {
-                    this.props.applyFilterList1('The')
+                    this.props.applyFilterList1('Slots')
                     this.props.displayFilterPanel(false);
                 }}>
-                    <Text style={{ color: "white" }}>The</Text>
+                    <Text style={{ color: "white" }}>Slots</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => {
+                    this.props.applyFilterList1('Scratch')
+                    this.props.displayFilterPanel(false);
+                }}>
+                    <Text style={{ color: "white" }}>Scratch</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => {
+                    this.props.applyFilterList1('tableandcards')
+                    this.props.displayFilterPanel(false);
+                }}>
+                    <Text style={{ color: "white" }}>Table and Cards</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => {
+                    this.props.applyFilterList1('live')
+                    this.props.displayFilterPanel(false);
+                }}>
+                    <Text style={{ color: "white" }}>Live</Text>
                 </TouchableOpacity>
             </ScrollView>
         } else {

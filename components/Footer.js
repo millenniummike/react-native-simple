@@ -4,6 +4,7 @@ import React from 'react';
 import { View, TouchableOpacity, Text, Image } from 'react-native';
 import { setScreen, toggleMenu, displayMenu } from '../reducer';
 import { SCREEN_HOME, SCREEN_GAME } from '../reducer'
+import { theme } from '../Styles'
 
 class BottomTabs extends React.Component {
   constructor(props) {
@@ -16,7 +17,13 @@ class BottomTabs extends React.Component {
           this.props.setScreen(SCREEN_HOME);
           this.props.displayMenu(false);
         }}>
-        <Image style={styles.imageBottomNav} source={require("../media/tab_home.png")}></Image>
+          { theme == "Maria" ? 
+          <Image style={styles.imageBottomNav} source={require("../media/tab_home.png")}></Image>
+        
+          :
+          <Image style={styles.imageBottomNav} source={require("../media/tab_home.png")}></Image>
+        
+          }
         <Text style={styles.textBottomNav}>Home</Text>
 
       </TouchableOpacity>
