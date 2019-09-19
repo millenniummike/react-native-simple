@@ -29,20 +29,5 @@ target 'RNSimple' do
 
   pod 'CodePush', :path => '../node_modules/react-native-code-push'
 
-  target 'RNSimpleTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
   use_native_modules!
-end
-
-target 'RNSimple-tvOS' do
-  # Pods for RNSimple-tvOS
-
-  target 'RNSimple-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
 end
