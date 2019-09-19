@@ -6,7 +6,7 @@ import { setScreen, toggleMenu, displayMenu } from '../reducer';
 import { SCREEN_HOME, SCREEN_GAME } from '../reducer'
 import { theme } from '../Styles'
 
-class BottomTabs extends React.Component {
+class BottomTabs extends React.PureComponent {
   constructor(props) {
     super(props);
   }

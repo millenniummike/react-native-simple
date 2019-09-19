@@ -3,10 +3,10 @@ import { View, Text, FlatList, TouchableOpacity, Image, TextInput } from 'react-
 import FastImage from 'react-native-fast-image'
 import styles from '../Styles';
 import { connect } from 'react-redux';
-import { getList1, setScreen, setGame, displayMenu, applyFilterList1, displayFilterPanel } from '../reducer';
+import { getList1, setScreen, goBackScreen, setGame, displayMenu, applyFilterList1, displayFilterPanel } from '../reducer';
 import { SCREEN_PRE_GAME } from '../reducer'
 
-class GameScreen extends React.Component {
+class GameScreen extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -20,7 +20,6 @@ class GameScreen extends React.Component {
     render() {
         const { list } = this.props
         const { filterList1 } = this.props
-        const { previousScreen } = this.props
           var filteredList = list.filter(function (str) {
             var keyword = filterList1.toLowerCase()
             if (keyword=="") return true
@@ -30,7 +29,7 @@ class GameScreen extends React.Component {
         return (
             <View style={styles.mainContainer}>
                 <TouchableOpacity onPress={() => {
-                                this.props.setScreen(previousScreen)
+                                this.props.goBackScreen()
                             }}
                                 style={styles.button}>
                                 <Text style={{ color: "white" }}>Back</Text>
@@ -75,7 +74,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    getList1, setScreen, displayMenu, setGame, applyFilterList1, displayFilterPanel
+    getList1, goBackScreen, setScreen, displayMenu, setGame, applyFilterList1, displayFilterPanel
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameScreen);

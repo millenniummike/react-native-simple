@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 
 import { SCREEN_HOME, SCREEN_PLAYING_GAME, SCREEN_GEOBLOCKED, SCREEN_GAME, SCREEN_PRE_GAME, SCREEN_LOGIN, SCREEN_POSTLOGIN_FORM1, SCREEN_POSTLOGIN_FORM2, SCREEN_REGISTER } from '../reducer'
 
-class MainScreen extends React.Component {
+class MainScreen extends React.PureComponent {
     constructor(props) {
         super(props);
     }

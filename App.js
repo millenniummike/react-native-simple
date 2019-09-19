@@ -24,9 +24,15 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducer';
 import logger from 'redux-logger'
+
+// debug logger
 const store = createStore(reducer, applyMiddleware(axiosMiddleware(client), reduxWebsocketMiddleware, logger));
-import { connect } from '@giantmachines/redux-websocket';
-store.dispatch(connect('ws://localhost:9000'));
+
+// no logger
+//const store = createStore(reducer, applyMiddleware(axiosMiddleware(client)));
+
+//import { connect } from '@giantmachines/redux-websocket';
+//store.dispatch(connect('ws://localhost:9000'));
 
 export default class App extends React.Component {
   constructor(props) {

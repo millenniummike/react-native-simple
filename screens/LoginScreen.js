@@ -7,27 +7,40 @@ import { setScreen, login } from '../reducer';
 class LoginScreen extends React.Component {
     constructor(props) {
         super(props);
+        state = {
+            name:null,
+            password:null
+        }
     }
     render() {
-        console.disableYellowBox = true;
-        var name='fred'
-        var password='password'
+        console.disableYellowBox = true
+        const {loginError} = this.props
+        const {name} = state
+        const {password} = state
+
         return (
             <View style={styles.mainContainer}>
                 <Text style={styles.textTitle}>Login Screen</Text>
+                <Text style={styles.textTitle}>Username</Text>
                 <TextInput
                     style={styles.textInputSearch}
                     value={name}
+                    onChangeText={text => this.setState({name:text})}
                 />
+                <Text style={styles.textTitle}>Password</Text>
                 <TextInput
                     style={styles.textInputSearch}
+                    placeholder="Enter your password"
+                    secureTextEntry={true}
                     value={password}
+                    onChangeText={text => this.setState({password:text})}
                 />
                 <TouchableOpacity style={styles.buttonTopNav} onPress={() => {
                     this.props.login("name","password")
                     }}>
-                    <Text style={{ color: "white" }}>Login Authorized</Text>
+                    <Text style={{ color: "white" }}>Login</Text>
                 </TouchableOpacity>
+                <Text style={{ margin:8, padding:4, color: "red" }}>{loginError}</Text>
             </View>
         );
     }

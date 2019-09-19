@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, TouchableOpacity, FlatList } from 'react-native';
 import FastImage from 'react-native-fast-image'
 import styles from '../Styles';
 import { connect } from 'react-redux';
@@ -17,7 +17,6 @@ class PreGameScreen extends React.Component {
         const { game } = this.props
         const { loggedIn } = this.props
         const { list } = this.props
-        const { previousScreen } = this.props
         var mappedList = Object.keys(list).map(function (key) {
             var game = list[key]
             game.name = key
@@ -28,12 +27,6 @@ class PreGameScreen extends React.Component {
             <View style={styles.mainContainer}>
                 {game ?
                     <View>
-                        <TouchableOpacity onPress={() => {
-                                this.props.setScreen(previousScreen)
-                            }}
-                                style={styles.button}>
-                                <Text style={{ color: "white" }}>Back</Text>
-                            </TouchableOpacity>
                         <FastImage style={styles.imageGameHeader} source={{uri: game.imageUrl}}/>
                         <Text style={styles.textGameTitle}>{game.gameName}</Text>
                         {!loggedIn ?

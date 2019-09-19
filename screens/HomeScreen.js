@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { getList1, setScreen, displayMenu, setGame} from '../reducer';
 import { SCREEN_PRE_GAME } from '../reducer'
 
-class HomeScreen extends React.Component {
+class HomeScreen extends React.PureComponent {
     constructor(props) {
         super(props);
     }

@@ -90,7 +90,7 @@ styles = StyleSheet.create({
         margin:8
     },
     textInputSearch:{
-        height: 40, padding:8, borderColor: 'gray', borderWidth: 1, color:'white'
+        height: 40, padding:8, margin:8, borderColor: 'gray', borderWidth: 1, color:'white'
     },
     buttonTag: {
         backgroundColor:"green",

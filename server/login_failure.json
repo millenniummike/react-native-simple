@@ -1,0 +1,4 @@
+{
+    "code": "BLOCKED_TOO_MANY_FAILED_ATTEMPTS",
+    "message": "Authentication denied, blocked due too many failed attempts"
+}

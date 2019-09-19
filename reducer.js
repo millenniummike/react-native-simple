@@ -25,13 +25,14 @@ export const SCREEN_POSTLOGIN_FORM1 = 'app/SCREEN_POSTLOGIN_FORM1'
 export const SCREEN_POSTLOGIN_FORM2 = 'app/SCREEN_POSTLOGIN_FORM2'
 export const SCREEN_REGISTER = 'app/SCREEN_REGISTER'
 export const SCREEN_GEOBLOCKED = 'app/SCREEN_GEOBLOCKED'
+export const GO_BACK_SCREEN = 'app/GO_BACK_SCREEN'
 export const SET_BLOCK_MENU = 'app/SET_BLOCK_MENU'
 
 export default reducer
 
 function reducer(state = {
-  previousScreen: [SCREEN_HOME],
-  showScreen: SCREEN_HOME, 
+  previousScreen: [],
+  showScreen: SCREEN_HOME,
   game: null, 
   loggedIn: false, 
   postLogin2: true, 
@@ -44,7 +45,8 @@ function reducer(state = {
   filterList2: "", 
   list: [], 
   list2: [],
-  websocketMessage:""
+  websocketMessage:"",
+  loginError:""
 }, action) {
   switch (action.type) {
     case SET_SCREEN:
@@ -68,14 +70,23 @@ function reducer(state = {
 
       return {
         ...state,
-        showScreen: action.data
+        showScreen: action.data,
+        previousScreen: state.previousScreen.concat({screen: action.data, game: state.game})
       };
 
+    case GO_BACK_SCREEN:
+        return {
+          ...state,
+          game:state.previousScreen[1].game,
+          showScreen:state.previousScreen[1].screen,
+          previousScreen: state.previousScreen.pop()
+        };
+    
     case SET_GAME:
       return {
         ...state,
         game: action.data,
-        previousScreen: state.previousScreen.concat(state.showScreen)
+        previousScreen: state.previousScreen.concat({screen: state.showScreen, game: action.data})
       };
 
     case SET_POSTLOGIN1:
@@ -107,11 +118,18 @@ function reducer(state = {
           if (state.postLogin1) {
             screen = SCREEN_POSTLOGIN_FORM1
           }
-
+      if (action.payload.data) {
+        return {
+          ...state,
+          loggedIn: false,
+          loginError: action.payload.data.message
+        };
+      }
       return {
         ...state,
         loggedIn: true,
-        showScreen:screen
+        showScreen:screen,
+        error:""
       };
 
       case SET_LOGGEDIN:
@@ -191,6 +209,12 @@ export function setScreen(value) {
   return {
     type: SET_SCREEN,
     data: value
+  };
+}
+
+export function goBackScreen() {
+  return {
+    type: GO_BACK_SCREEN
   };
 }
 
