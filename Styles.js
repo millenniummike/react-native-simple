@@ -2,7 +2,7 @@ import { StyleSheet, Dimensions, Platform } from 'react-native';
 const { width, height } = Dimensions.get('window');
 
 let styles
-export const theme="Unibet"
+export const theme="Maria"
 
 styles = StyleSheet.create({
 

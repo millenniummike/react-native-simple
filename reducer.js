@@ -31,7 +31,7 @@ export const SET_BLOCK_MENU = 'app/SET_BLOCK_MENU'
 export default reducer
 
 function reducer(state = {
-  previousScreen: [],
+  previousScreen: [SCREEN_HOME],
   showScreen: SCREEN_HOME,
   game: null, 
   loggedIn: false, 

@@ -5,6 +5,7 @@ import styles from '../Styles';
 import { connect } from 'react-redux';
 import { getList1, setScreen, displayMenu, setGame} from '../reducer';
 import { SCREEN_PRE_GAME } from '../reducer'
+import codePush from "react-native-code-push";
 
 class HomeScreen extends React.PureComponent {
     constructor(props) {
@@ -14,6 +15,12 @@ class HomeScreen extends React.PureComponent {
     componentDidMount() {
         this.props.getList1()
     }
+    onButtonPress() {
+        codePush.sync({
+          updateDialog: true,
+          installMode: codePush.InstallMode.IMMEDIATE
+        });
+      }
     
     render() {
         const { list } = this.props
@@ -32,13 +39,17 @@ class HomeScreen extends React.PureComponent {
 
         return (
                 <ScrollView style={styles.mainContainer}>
+
+<TouchableOpacity onPress={this.onButtonPress}>
+  <Text>Check for updates</Text>
+</TouchableOpacity>
                     <Text style={styles.textTitle}>Recommended For You</Text>
                     <FlatList data={list} horizontal={true} contentContainerStyle={styles.carousel}
                         renderItem={({ item, index }) => (
                             <TouchableOpacity
                             onPress={() => {
-                                this.props.setGame(item);
                                 this.props.setScreen(SCREEN_PRE_GAME);
+                                this.props.setGame(item);
                                 this.props.displayMenu(false);
                             }}>
                                 <View style={styles.listItemCarousel}>
@@ -55,8 +66,8 @@ class HomeScreen extends React.PureComponent {
                         renderItem={({ item, index }) => (
                             <TouchableOpacity
                             onPress={() => {
-                                this.props.setGame(item);
                                 this.props.setScreen(SCREEN_PRE_GAME);
+                                this.props.setGame(item);
                                 this.props.displayMenu(false);
                             }}>
                                 <View style={styles.listItem}>
@@ -72,8 +83,8 @@ class HomeScreen extends React.PureComponent {
                         renderItem={({ item, index }) => (
                             <TouchableOpacity
                             onPress={() => {
-                                this.props.setGame(item);
                                 this.props.setScreen(SCREEN_PRE_GAME);
+                                this.props.setGame(item);
                                 this.props.displayMenu(false);
                             }}>
                                 <View style={styles.listItemBig}>
@@ -90,8 +101,8 @@ class HomeScreen extends React.PureComponent {
                         renderItem={({ item, index }) => (
                             <TouchableOpacity
                             onPress={() => {
-                                this.props.setGame(item);
                                 this.props.setScreen(SCREEN_PRE_GAME);
+                                this.props.setGame(item);
                                 this.props.displayMenu(false);
                             }}>
                                 <View style={styles.listItem}>

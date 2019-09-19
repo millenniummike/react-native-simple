@@ -29,7 +29,7 @@ import logger from 'redux-logger'
 const store = createStore(reducer, applyMiddleware(axiosMiddleware(client), reduxWebsocketMiddleware, logger));
 
 // no logger
-//const store = createStore(reducer, applyMiddleware(axiosMiddleware(client)));
+// const store = createStore(reducer, applyMiddleware(axiosMiddleware(client)));
 
 //import { connect } from '@giantmachines/redux-websocket';
 //store.dispatch(connect('ws://localhost:9000'));

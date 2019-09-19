@@ -51,8 +51,8 @@ class GameScreen extends React.PureComponent {
                         renderItem={({ item, index }) => (
                             <TouchableOpacity
                                 onPress={() => {
-                                    this.props.setGame(item);
                                     this.props.setScreen(SCREEN_PRE_GAME);
+                                    this.props.setGame(item);
                                     this.props.displayMenu(false);
                                 }}>
                                 <View style={styles.listItem}>
