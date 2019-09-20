@@ -2,7 +2,7 @@ import { StyleSheet, Dimensions, Platform } from 'react-native';
 const { width, height } = Dimensions.get('window');
 
 let styles
-export const theme="Maria"
+export const theme="Unibet"
 
 styles = StyleSheet.create({
 
@@ -82,7 +82,7 @@ styles = StyleSheet.create({
     },
     imageGameHeader:{
         width,
-        height:200,
+        height:250,
         resizeMode:"cover"  
     },
     textGameTitle:{
@@ -277,7 +277,7 @@ styles = StyleSheet.create({
     },
     imageGameHeader:{
         width,
-        height:200,
+        height:250,
         resizeMode:"cover"  
     },
     textGameTitle:{

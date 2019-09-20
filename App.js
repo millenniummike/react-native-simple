@@ -25,16 +25,19 @@ import { Provider } from 'react-redux';
 import reducer from './reducer';
 import logger from 'redux-logger'
 
+// Codepush
+import codePush from "react-native-code-push";
+
 // debug logger
-const store = createStore(reducer, applyMiddleware(axiosMiddleware(client), reduxWebsocketMiddleware, logger));
+//const store = createStore(reducer, applyMiddleware(axiosMiddleware(client), reduxWebsocketMiddleware, logger));
 
 // no logger
-// const store = createStore(reducer, applyMiddleware(axiosMiddleware(client)));
+const store = createStore(reducer, applyMiddleware(axiosMiddleware(client)));
 
 //import { connect } from '@giantmachines/redux-websocket';
 //store.dispatch(connect('ws://localhost:9000'));
 
-export default class App extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -52,3 +55,5 @@ export default class App extends React.Component {
     );
   }
 }
+
+export default codePush(App);

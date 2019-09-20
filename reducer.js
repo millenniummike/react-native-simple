@@ -27,26 +27,28 @@ export const SCREEN_REGISTER = 'app/SCREEN_REGISTER'
 export const SCREEN_GEOBLOCKED = 'app/SCREEN_GEOBLOCKED'
 export const GO_BACK_SCREEN = 'app/GO_BACK_SCREEN'
 export const SET_BLOCK_MENU = 'app/SET_BLOCK_MENU'
+export const SET_OTA_VERSION = 'app/SET_OTA_VERSION'
 
 export default reducer
 
 function reducer(state = {
   previousScreen: [SCREEN_HOME],
   showScreen: SCREEN_HOME,
-  game: null, 
-  loggedIn: false, 
-  postLogin2: true, 
-  postLogin1: true, 
-  showMenuBlocked:false, 
-  showMenu: false, 
-  showFilterPanel:false, 
-  filterValue:"", 
-  filterList1: "", 
-  filterList2: "", 
-  list: [], 
+  game: null,
+  loggedIn: false,
+  postLogin2: true,
+  postLogin1: true,
+  showMenuBlocked: false,
+  showMenu: false,
+  showFilterPanel: false,
+  filterValue: "",
+  filterList1: "",
+  filterList2: "",
+  list: [],
   list2: [],
-  websocketMessage:"",
-  loginError:""
+  websocketMessage: "",
+  loginError: "",
+  OTAVersion: "Unknown"
 }, action) {
   switch (action.type) {
     case SET_SCREEN:
@@ -71,28 +73,34 @@ function reducer(state = {
       return {
         ...state,
         showScreen: action.data,
-        previousScreen: state.previousScreen.concat({screen: action.data, game: state.game})
+        previousScreen: state.previousScreen.concat({ screen: action.data, game: state.game })
       };
 
     case GO_BACK_SCREEN:
-        return {
-          ...state,
-          game:state.previousScreen[1].game,
-          showScreen:state.previousScreen[1].screen,
-          previousScreen: state.previousScreen.pop()
-        };
-    
+      return {
+        ...state,
+        game: state.previousScreen[1].game,
+        showScreen: state.previousScreen[1].screen,
+        previousScreen: state.previousScreen.pop()
+      };
+
     case SET_GAME:
       return {
         ...state,
         game: action.data,
-        previousScreen: state.previousScreen.concat({screen: state.showScreen, game: action.data})
+        previousScreen: state.previousScreen.concat({ screen: state.showScreen, game: action.data })
       };
 
     case SET_POSTLOGIN1:
       return {
         ...state,
         postLogin1: action.data
+      };
+
+    case SET_OTA_VERSION:
+      return {
+        ...state,
+        OTAVersion: action.data
       };
 
     case SET_POSTLOGIN2:
@@ -107,17 +115,17 @@ function reducer(state = {
         showMenu: !state.showMenu
       };
 
-      case LOGIN:
+    case LOGIN:
       return { ...state, loading: true };
 
-      case LOGIN_SUCCESS:
-        var screen = state.previousScreen
-          if (state.postLogin2) {
-            screen = SCREEN_POSTLOGIN_FORM2
-          }
-          if (state.postLogin1) {
-            screen = SCREEN_POSTLOGIN_FORM1
-          }
+    case LOGIN_SUCCESS:
+      var screen = state.previousScreen
+      if (state.postLogin2) {
+        screen = SCREEN_POSTLOGIN_FORM2
+      }
+      if (state.postLogin1) {
+        screen = SCREEN_POSTLOGIN_FORM1
+      }
       if (action.payload.data) {
         return {
           ...state,
@@ -128,28 +136,28 @@ function reducer(state = {
       return {
         ...state,
         loggedIn: true,
-        showScreen:screen,
-        error:""
+        showScreen: screen,
+        error: ""
       };
 
-      case SET_LOGGEDIN:
-          return {
-            ...state,
-            loggedIn: action.data
-          };
+    case SET_LOGGEDIN:
+      return {
+        ...state,
+        loggedIn: action.data
+      };
 
     case DISPLAY_MENU:
       return {
         ...state,
         showMenu: action.data
       };
-    
+
     case DISPLAY_FILTER_PANEL:
       return {
         ...state,
         showFilterPanel: action.data
       };
-    
+
     case SET_BLOCK_MENU:
       return {
         ...state,
@@ -168,7 +176,7 @@ function reducer(state = {
       };
 
     case APPLY_FILTER_LIST1:
-      return { ...state, filterList1:action.data };
+      return { ...state, filterList1: action.data };
 
     case GET_LIST2:
       return { ...state, loading: true };
@@ -184,12 +192,19 @@ function reducer(state = {
     case 'REDUX_WEBSOCKET::MESSAGE':
       return {
         ...state,
-        websocketMessage:action.payload.message
+        websocketMessage: action.payload.message
       }
 
     default:
       return state;
   }
+}
+
+export function setOTAVersion(value) {
+  return {
+    type: SET_OTA_VERSION,
+    data: value
+  };
 }
 
 export function setPostLogin1(value) {
@@ -299,11 +314,11 @@ export function getList2() {
   };
 }
 
-function mapList(list){
-var mappedList = Object.keys(list).map(function(key) {
-  var game = list[key]
-  game.name = key
-  return game
-})
+function mapList(list) {
+  var mappedList = Object.keys(list).map(function (key) {
+    var game = list[key]
+    game.name = key
+    return game
+  })
   return mappedList
 }

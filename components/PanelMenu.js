@@ -12,10 +12,12 @@ class Panel extends React.Component {
         const { showMenu } = this.props
         const { showMenuBlocked } = this.props
         const { loggedIn } = this.props
+        const { OTAVersion } = this.props
 
         if (showMenu && !showMenuBlocked) {
             return <ScrollView style={styles.panel}>
                 <Text style={{ color: "white", fontSize:16, marginBottom:4}}>Menu</Text>
+                <Text style={{ color: "white" }}>OTA Version={OTAVersion}</Text>
                 <TouchableOpacity onPress={() => {
                     this.props.setScreen(SCREEN_HOME)
                     this.props.toggleMenu()

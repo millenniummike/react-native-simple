@@ -3,7 +3,7 @@ import { View, ScrollView, Text, FlatList, TouchableOpacity, Image } from 'react
 import FastImage from 'react-native-fast-image'
 import styles from '../Styles';
 import { connect } from 'react-redux';
-import { getList1, setScreen, displayMenu, setGame} from '../reducer';
+import { getList1, setScreen, displayMenu, setGame, setOTAVersion} from '../reducer';
 import { SCREEN_PRE_GAME } from '../reducer'
 import codePush from "react-native-code-push";
 
@@ -14,6 +14,9 @@ class HomeScreen extends React.PureComponent {
 
     componentDidMount() {
         this.props.getList1()
+        codePush.getUpdateMetadata().then((data) => {
+            this.props.setOTAVersion(data.label)
+        });
     }
     onButtonPress() {
         codePush.sync({
@@ -123,7 +126,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    getList1, setScreen, displayMenu, setGame
+    getList1, setScreen, displayMenu, setGame, setOTAVersion
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
