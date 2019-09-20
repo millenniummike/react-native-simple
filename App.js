@@ -29,7 +29,7 @@ import logger from 'redux-logger'
 import codePush from "react-native-code-push";
 
 // debug logger
-//const store = createStore(reducer, applyMiddleware(axiosMiddleware(client), reduxWebsocketMiddleware, logger));
+// const store = createStore(reducer, applyMiddleware(axiosMiddleware(client), reduxWebsocketMiddleware, logger));
 
 // no logger
 const store = createStore(reducer, applyMiddleware(axiosMiddleware(client)));

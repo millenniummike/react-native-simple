@@ -2,9 +2,9 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import styles from '../Styles';
 import { connect } from 'react-redux';
-import { setScreen, toggleMenu } from '../reducer';
+import { setScreen } from '../reducer';
 
-class MenuScreen extends React.Component {
+class BlankScreen extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -12,7 +12,7 @@ class MenuScreen extends React.Component {
         console.disableYellowBox = true;
         return (
             <View style={styles.mainContainer}>
-                <Text style={styles.textTitle}>Menu Screen</Text>
+                <Text style={styles.textTitle}>Empty Screen</Text>
             </View>
         );
     }
@@ -23,7 +23,7 @@ const mapStateToProps = state => {
   };
   
   const mapDispatchToProps = {
-    setScreen, toggleMenu
+
   };
   
-  export default connect(mapStateToProps, mapDispatchToProps)(MenuScreen);
+  export default connect(mapStateToProps, mapDispatchToProps)(BlankScreen);
