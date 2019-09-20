@@ -40,9 +40,9 @@ class HomeScreen extends React.PureComponent {
         return (
                 <ScrollView style={styles.mainContainer}>
 
-<TouchableOpacity onPress={this.onButtonPress}>
-  <Text>Check for updates</Text>
-</TouchableOpacity>
+                    <TouchableOpacity style={styles.buttonTopNav} onPress={this.onButtonPress}>
+                    <Text>Update</Text>
+                    </TouchableOpacity>
                     <Text style={styles.textTitle}>Recommended For You</Text>
                     <FlatList data={list} horizontal={true} contentContainerStyle={styles.carousel}
                         renderItem={({ item, index }) => (
