@@ -116,7 +116,7 @@ function reducer(state = {
       };
 
     case LOGIN:
-      return { ...state, loading: true };
+      return { ...state, loading: true }
 
     case LOGIN_SUCCESS:
       var screen = state.previousScreen
@@ -127,18 +127,21 @@ function reducer(state = {
         screen = SCREEN_POSTLOGIN_FORM1
       }
       if (action.payload.data) {
-        return {
-          ...state,
-          loggedIn: false,
-          loginError: action.payload.data.message
-        };
+        if (action.payload.data.message) {
+          return {
+            ...state,
+            loggedIn: false,
+            loginError: action.payload.data.message
+          };
+        }
       }
       return {
         ...state,
         loggedIn: true,
         showScreen: screen,
+        customer: action.payload.data,
         error: ""
-      };
+      }
 
     case SET_LOGGEDIN:
       return {

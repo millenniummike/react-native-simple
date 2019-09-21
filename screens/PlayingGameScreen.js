@@ -1,6 +1,9 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { WebView } from 'react-native-webview';
 import styles from '../Styles';
+import { Dimensions } from 'react-native';
+const { width, height } = Dimensions.get('window');
 
 class PlayingGameScreen extends React.Component {
     constructor(props) {
@@ -11,6 +14,9 @@ class PlayingGameScreen extends React.Component {
         return (
             <View style={styles.mainContainer}>
                 <Text style={styles.textTitle}>ACTUAL GAME!!</Text>
+                <WebView 
+                style={{ height:height*0.8 }}
+                source={{ uri: 'http://www.innovationtech.co.uk/vrroulette/' }} />
             </View>
         );
     }
