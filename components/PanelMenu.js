@@ -1,8 +1,8 @@
 import styles from '../Styles';
 import { connect } from 'react-redux';
 import React from 'react';
-import { ScrollView, View, TouchableOpacity, Text } from 'react-native';
-import { setScreen, toggleMenu, setLoggedIn} from '../reducer';
+import { ScrollView, Image, View, TouchableOpacity, Text } from 'react-native';
+import { setScreen, toggleMenu, setLoggedIn } from '../reducer';
 import { SCREEN_HOME, SCREEN_GAME, SCREEN_REGISTER } from '../reducer'
 class Panel extends React.Component {
     constructor(props) {
@@ -16,44 +16,58 @@ class Panel extends React.Component {
 
         if (showMenu && !showMenuBlocked) {
             return <ScrollView style={styles.panel}>
-                <Text style={{ color: "white", fontSize:16, marginBottom:4}}>Menu</Text>
-                <Text style={{ color: "white" }}>OTA Version={OTAVersion}</Text>
                 <TouchableOpacity onPress={() => {
                     this.props.setScreen(SCREEN_HOME)
                     this.props.toggleMenu()
-                    }}>
-                    <Text style={{ color: "white" }}>Home</Text>
+                }}>
+                    <View style={styles.menuContainer}>
+                        <Image style={styles.imageBottomNav} source={require("../media/tab_menu.png")}></Image>
+                        <Text style={styles.textMenu}>Home</Text>
+                    </View>
                 </TouchableOpacity>
+
                 <TouchableOpacity onPress={() => {
                     this.props.setScreen(SCREEN_GAME)
                     this.props.toggleMenu()
-                    }}>
-                    <Text style={{ color: "white" }}>Browse Games</Text>
+                }}>
+                    <View style={styles.menuContainer}>
+                        <Image style={styles.imageBottomNav} source={require("../media/tab_menu.png")}></Image>
+                        <Text style={styles.textMenu}>Browse Games</Text>
+                    </View>
                 </TouchableOpacity>
 
-                { loggedIn ?
-                <View>
-                    <TouchableOpacity onPress={() => {
-                        this.props.setScreen(SCREEN_REGISTER)
-                        this.props.toggleMenu()
+                {loggedIn ?
+                    <View>
+                        <TouchableOpacity onPress={() => {
+                            this.props.setScreen(SCREEN_REGISTER)
+                            this.props.toggleMenu()
                         }}>
-                        <Text style={{ color: "white" }}>Exciting Loggedin Feature1</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => {
-                        this.props.setScreen(SCREEN_HOME)
-                        this.props.toggleMenu()
-                        this.props.setLoggedIn(false)
+                            <View style={styles.menuContainer}>
+                                <Image style={styles.imageBottomNav} source={require("../media/tab_menu.png")}></Image>
+                                <Text style={styles.textMenu}>Browse Games</Text>
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => {
+                            this.props.setScreen(SCREEN_HOME)
+                            this.props.toggleMenu()
+                            this.props.setLoggedIn(false)
                         }}>
-                        <Text style={{ color: "white" }}>Logout</Text>
-                    </TouchableOpacity> 
-                </View> 
-                :
-                <View></View>
+                            <View style={styles.menuContainer}>
+                                <Image style={styles.imageBottomNav} source={require("../media/tab_menu.png")}></Image>
+                                <Text style={styles.textMenu}>Logout</Text>
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+                    :
+                    <View></View>
                 }
                 <TouchableOpacity onPress={() => {
-                    }}>
-                    <Text style={{ color: "white" }}></Text>
+                }}>
+                    <Text style={styles.textMenu}></Text>
                 </TouchableOpacity>
+                <View style={styles.menuContainer}>
+                    <Text style={styles.textMenu}>OTA Version={OTAVersion}</Text>
+                </View>
             </ScrollView>
         } else {
             return <View></View>

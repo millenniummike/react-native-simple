@@ -4,7 +4,7 @@ import styles from '../Styles';
 import { setScreen, toggleMenu } from '../reducer';
 import { connect } from 'react-redux';
 import { SCREEN_LOGIN, SCREEN_REGISTER } from '../reducer'
-import { theme } from '../Styles'
+import { styleTheme } from '../Styles'
 
 class Header extends React.Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class Header extends React.Component {
     return (
       <View style={styles.header}>
         <View style={styles.headerLeft}>
-          { theme == "Maria" ? 
+          { styleTheme == "Maria" ? 
           <Image style={styles.imageLogo}
             source={require('../media/mariaLogo.png')}
           />

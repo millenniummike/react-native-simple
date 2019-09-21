@@ -1,8 +1,6 @@
-import { StyleSheet, Dimensions, Platform } from 'react-native';
+import { Dimensions } from 'react-native';
 const { width, height } = Dimensions.get('window');
-
-const styles = StyleSheet.create({
-
+module.exports = {
     container: {
         flex: 1,
         backgroundColor: "black"
@@ -65,6 +63,9 @@ const styles = StyleSheet.create({
         width:width/2,
         backgroundColor: 'black'
     },
+    menuContainer: {
+        flexDirection: 'row'
+    },
     imageLogo: {
         width: 180,
         height: 30,
@@ -74,12 +75,16 @@ const styles = StyleSheet.create({
         width:20,
         height:20,
         margin:2,
-        tintColor:"white"
+        tintColor:"red"
     },
     imageGameHeader:{
         width,
-        height:200,
+        height:250,
         resizeMode:"cover"  
+    },
+    textMenu:{
+        color:"white",
+        padding:4
     },
     textGameTitle:{
         color:"white",
@@ -87,6 +92,16 @@ const styles = StyleSheet.create({
     },
     textInputSearch:{
         height: 40, padding:8, borderColor: 'gray', borderWidth: 1, color:'white'
+    },
+    buttonTag: {
+        backgroundColor:"#dc0835",
+        textAlign:"center",
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius:5,
+        borderWidth: 1,
+        margin:8,
+        padding:8
     },
     buttonBig: {
         padding: 4,
@@ -172,10 +187,15 @@ const styles = StyleSheet.create({
         height:120,
         alignItems: 'center'
     },
+    listItemCarousel: {
+        margin:2,
+        padding:2,
+        width:width,
+        height:200,
+        alignItems: 'center'
+    },
     inputText: {
         backgroundColor:'white',
         padding:8
     }
-});
-
-export default styles;
+}

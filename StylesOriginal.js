@@ -1,8 +1,6 @@
-import { StyleSheet, Dimensions, Platform } from 'react-native';
+import { Dimensions } from 'react-native';
 const { width, height } = Dimensions.get('window');
-
-const styles = StyleSheet.create({
-
+module.exports = {
     container: {
         flex: 1,
         backgroundColor: "black"
@@ -65,10 +63,14 @@ const styles = StyleSheet.create({
         width:width/2,
         backgroundColor: 'black'
     },
+    menuContainer: {
+        flexDirection: 'row'
+    },
     imageLogo: {
-        width: 30,
+        width: 130,
         height: 30,
-        margin:10
+        margin:10,
+        resizeMode:'contain'
     },
     imageBottomNav:{
         width:20,
@@ -80,6 +82,10 @@ const styles = StyleSheet.create({
         width,
         height:200,
         resizeMode:"cover"  
+    },
+    textMenu:{
+        color:"white",
+        padding:4
     },
     textGameTitle:{
         color:"white",
@@ -176,6 +182,4 @@ const styles = StyleSheet.create({
         backgroundColor:'white',
         padding:8
     }
-});
-
-export default styles;
+}
