@@ -84,6 +84,13 @@ textGameTitle:{
     color:"white",
     margin:8
 },
+menuContainer: {
+    flexDirection:'row'
+},
+textMenu:{
+    color:"white",
+    padding:4
+},
 textInputSearch:{
     height: 40, padding:8, margin:8, borderColor: 'gray', borderWidth: 1, color:'white'
 },

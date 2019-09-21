@@ -1,4 +1,4 @@
-export const styleTheme="Original"
+export const styleTheme="Maria"
 import { StyleSheet } from 'react-native';
 import StyleSheet1 from './StylesMaria'
 import StyleSheet2 from './StylesOriginal'
