@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, FlatList } from 'react-native';
 import FastImage from 'react-native-fast-image'
 import styles from '../Styles';
 import { connect } from 'react-redux';
-import { setScreen, getList1, displayMenu, setGame, applyFilterList1} from '../reducer';
+import { setScreen, getList1, displayMenu, setGame, applyFilterList1 } from '../reducer';
 import { SCREEN_LOGIN, SCREEN_PLAYING_GAME, SCREEN_GAME } from '../reducer'
 
 class PreGameScreen extends React.Component {
@@ -27,11 +27,11 @@ class PreGameScreen extends React.Component {
             <View style={styles.mainContainer}>
                 {game ?
                     <View>
-                        <FastImage style={styles.imageGameHeader} source={{uri: game.imageUrl}}/>
+                        <FastImage style={styles.imageGameHeader} source={{ uri: game.imageUrl }} />
                         <Text style={styles.textGameTitle}>{game.gameName}</Text>
                         {!loggedIn ?
                             <TouchableOpacity onPress={() => {
-                                this.props.setScreen(SCREEN_LOGIN )
+                                this.props.setScreen(SCREEN_LOGIN)
                             }}
                                 style={styles.buttonBig}>
                                 <Text style={{ color: "white" }}>Log In To Play</Text>
@@ -42,6 +42,11 @@ class PreGameScreen extends React.Component {
                                 <Text style={{ color: "white" }}>Play</Text>
                             </TouchableOpacity>
                         }
+
+                        <TouchableOpacity onPress={() => this.props.setScreen(SCREEN_PLAYING_GAME)}
+                            style={styles.buttonBig}>
+                            <Text style={{ color: "white" }}>Play For Fun</Text>
+                        </TouchableOpacity>
                     </View>
                     :
                     <View>
@@ -52,22 +57,22 @@ class PreGameScreen extends React.Component {
                     <Text style={styles.textTitle}>Tags</Text>
                     {game.tags ?
                         <FlatList numColumns="4" data={game.tags} contentContainerStyle={styles.x}
-                        renderItem={({ item, index }) => (
-                            <TouchableOpacity
-                                style={styles.buttonTag}
-                                onPress={() => {
-                                    this.props.setScreen(SCREEN_GAME);
-                                    this.props.applyFilterList1(item)
-                                    this.props.displayMenu(false);
-                                }}>
+                            renderItem={({ item, index }) => (
+                                <TouchableOpacity
+                                    style={styles.buttonTag}
+                                    onPress={() => {
+                                        this.props.setScreen(SCREEN_GAME);
+                                        this.props.applyFilterList1(item)
+                                        this.props.displayMenu(false);
+                                    }}>
                                     <Text style={styles.textListItem}>{item}</Text>
-                            </TouchableOpacity>
-                        )}
-                    >
-                    </FlatList>
-                    :
+                                </TouchableOpacity>
+                            )}
+                        >
+                        </FlatList>
+                        :
                         <Text style={styles.textGameTitle}>No tags</Text>
-                        }
+                    }
                     <Text style={styles.textTitle}>Recommended For You</Text>
                     <FlatList data={mappedList} horizontal={true} contentContainerStyle={styles.carousel}
                         renderItem={({ item, index }) => (

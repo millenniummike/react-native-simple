@@ -16,7 +16,7 @@ class PlayingGameScreen extends React.Component {
                 <Text style={styles.textTitle}>ACTUAL GAME!!</Text>
                 <WebView 
                 style={{ height:height*0.8 }}
-                source={{ uri: 'http://www.innovationtech.co.uk/vrroulette/' }} />
+                source={{ uri: 'https://ellisonleao.github.io/clumsy-bird/' }} />
             </View>
         );
     }
