@@ -4,9 +4,9 @@ import ButtonPanel from '../components/NavButtonPanel';
 import BetButton from '../components/BetButton';
 import styles from '../Styles';
 import { connect } from 'react-redux';
-import { listOfferings, listHomePage, setBetSlipPanel, changeLivePanelIndex } from '../reducer';
+import { listOfferings, listHomePage, setBetSlipPanel, changeLivePanelIndex, setScreen } from '../reducer';
 import moment from 'moment';
-const { width, height } = Dimensions.get('window');
+import { SCREEN_BLANK } from '../reducer'
 
 class HomeScreen extends React.Component {
     constructor(props) {
@@ -17,9 +17,7 @@ class HomeScreen extends React.Component {
             visible: true
         }
     }
-    navButtonPanelClick(){
-        alert ("TO DO")
-    }
+
     componentDidMount() {
         this.props.listOfferings('all');
         this.props.listHomePage();
@@ -95,8 +93,7 @@ class HomeScreen extends React.Component {
         const { promo } = this.props;
         const { errors } = this.props;
         const { live } = this.props;
-        const navigation = categories;
-
+        const { categories } = this.props;
         return (
 
             <View style={styles.mainContainer}>
@@ -104,7 +101,7 @@ class HomeScreen extends React.Component {
                     <Text style={{ color: "red" }}>{error}</Text>
                 )}
                 <ScrollView>
-                    <ButtonPanel onClick={this.navButtonPanelClick} data={navigation} />
+                    <ButtonPanel onClick={() => this.props.setScreen(SCREEN_BLANK)} data={categories} />
 
                     {promo.length > 0
                         ?
@@ -126,7 +123,7 @@ class HomeScreen extends React.Component {
                                     <Image style={styles.iconTitleImage} source={{ uri: 'https://a1s.unicdn.net/polopoly_fs/1.814643.1482140856!/image/1580177844.png' }} />
                                     <Text style={styles.widgetHeader}>Live</Text>
                                 </View>
-                                <ScrollView horizontal="true">
+                                <ScrollView style={styles.buttonNavContainer} horizontal>
                                     {live.map(item => {
                                         if (item.events.length > 0) {
                                             return <TouchableOpacity onPress={() => this.props.changeLivePanelIndex(item.order)} key={item.order}>
@@ -166,70 +163,13 @@ const mapStateToProps = state => {
         errors: state.errors,
         promo: storedPromo,
         live: storedLive,
-        livePanelIndex: state.livePanelIndex
+        livePanelIndex: state.livePanelIndex,
+        categories: state.categories
     };
 };
 
 const mapDispatchToProps = {
-    listOfferings, listHomePage, changeLivePanelIndex, setBetSlipPanel
+    listOfferings, listHomePage, changeLivePanelIndex, setBetSlipPanel, setScreen
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
-
-//** TODO get from API */
-const categories = [
-    {
-        "id": 1,
-        "sport": "Upcoming",
-        "icon": "user",
-        "uri": "https://a1s.unicdn.net/polopoly_fs/1.814643.1482140856!/image/1580177844.png"
-    },
-    {
-        "id": 2,
-        "sport": "Streaming",
-        "icon": "photo",
-        "uri": "https://a1s.unicdn.net/polopoly_fs/1.800594.1482140895!/image/1842103136.png"
-    },
-    {
-        "id": 3,
-        "sport": "Cricket World Cup",
-        "icon": "fire",
-        "uri": "https://a1s.unicdn.net/polopoly_fs/1.799481.1482140901!/image/533153441.png"
-    },
-    {
-        "id": 4,
-        "sport": "Racing",
-        "icon": "eye",
-        "uri": "https://a1s.unicdn.net/polopoly_fs/1.1008280.1521132432!/image/2762801378.png"
-    },
-    {
-        "id": 5,
-        "sport": "Euro Qualifiers",
-        "icon": "wrench",
-        "uri": "https://a1s.unicdn.net/polopoly_fs/1.800594.1482140895!/image/1842103136.png"
-    },
-    {
-        "id": 6,
-        "sport": "Women's World Cup",
-        "icon": "briefcase",
-        "uri": "https://a1s.unicdn.net/polopoly_fs/1.1008280.1521132432!/image/2762801378.png"
-    },
-    {
-        "id": 7,
-        "sport": "Football",
-        "icon": "user",
-        "uri": "https://a1s.unicdn.net/polopoly_fs/1.800594.1482140895!/image/1842103136.png"
-    },
-    {
-        "id": 8,
-        "sport": "Odd Boosts",
-        "icon": "globe",
-        "uri": "https://a1s.unicdn.net/polopoly_fs/1.800594.1482140895!/image/1842103136.png"
-    },
-    {
-        "id": 9,
-        "sport": "Tennis",
-        "icon": "beer",
-        "uri": "https://a1s.unicdn.net/polopoly_fs/1.800594.1482140895!/image/1842103136.png"
-    }
-];

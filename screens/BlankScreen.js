@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { View } from 'react-native';
+import { View, Text} from 'react-native';
 import styles from '../Styles';
 import BetSlipPanel from '../components/BetSlipPanel';
 import { connect } from 'react-redux';
@@ -15,7 +15,7 @@ class BlankScreen extends PureComponent {
         console.disableYellowBox = true;
         return (
             <View style={styles.mainContainer}>
-                <Text>Blank Panel</Text>
+                <Text style={styles.textDefault}>Blank Panel</Text>
                 <BetSlipPanel></BetSlipPanel>
             </View>
         );

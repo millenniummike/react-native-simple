@@ -9,10 +9,11 @@ import PostLoginForm1 from './PostLoginForm1';
 import PostLoginForm2 from './PostLoginForm2';
 import RegisterScreen from './RegisterScreen';
 
-import { SCREEN_HOME, SCREEN_IN_PLAY, SCREEN_AZ, SCREEN_REGISTER, SCREEN_POSTLOGIN_FORM1, SCREEN_POSTLOGIN_FORM2, SCREEN_LOGIN, SCREEN_MYBETS, SCREEN_GEOBLOCKED} from '../reducer'
+import { SCREEN_HOME, SCREEN_BLANK, SCREEN_IN_PLAY, SCREEN_AZ, SCREEN_REGISTER, SCREEN_POSTLOGIN_FORM1, SCREEN_POSTLOGIN_FORM2, SCREEN_LOGIN, SCREEN_MYBETS, SCREEN_GEOBLOCKED} from '../reducer'
 
 import styles from '../Styles';
 import { connect } from 'react-redux';
+import BlankScreen from './BlankScreen';
 
 class MainScreen extends React.Component {
     constructor(props) {
@@ -31,6 +32,7 @@ class MainScreen extends React.Component {
             case SCREEN_POSTLOGIN_FORM1: return <PostLoginForm1 />;
             case SCREEN_POSTLOGIN_FORM2: return <PostLoginForm2 />;
             case SCREEN_GEOBLOCKED: return <AnotherScreen />;
+            case SCREEN_BLANK: return <BlankScreen />;
         }
     }
     render() {

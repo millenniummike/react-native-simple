@@ -17,15 +17,9 @@ class Header extends React.Component {
     return (
       <View style={styles.header}>
         <View style={styles.headerLeft}>
-          { styleTheme == "Maria" ? 
-          <Image style={styles.imageLogo}
-            source={require('../media/mariaLogo.png')}
-          />
-          :
           <Image style={styles.imageLogo}
             source={require('../media/unibetLogo.png')}
           />
-          }
         </View>
         { loggedIn ?
         <View style={styles.headerRight}>

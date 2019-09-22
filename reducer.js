@@ -40,6 +40,63 @@ export const ADD_BET = 'sports-app/bet/ADD_BET';
 export const LIVE_PANEL_INDEX = 'sports-app/LIVE_PANEL_INDEX';
 export const SET_BETSLIPPANEL = 'sports-app/SET_BETSLIPPANEL'
 
+//** TODO get from API and move to reducer **//
+const categories = [
+  {
+      "id": 1,
+      "sport": "Upcoming",
+      "icon": "user",
+      "uri": "https://a1s.unicdn.net/polopoly_fs/1.814643.1482140856!/image/1580177844.png"
+  },
+  {
+      "id": 2,
+      "sport": "Streaming",
+      "icon": "photo",
+      "uri": "https://a1s.unicdn.net/polopoly_fs/1.800594.1482140895!/image/1842103136.png"
+  },
+  {
+      "id": 3,
+      "sport": "Cricket World Cup",
+      "icon": "fire",
+      "uri": "https://a1s.unicdn.net/polopoly_fs/1.799481.1482140901!/image/533153441.png"
+  },
+  {
+      "id": 4,
+      "sport": "Racing",
+      "icon": "eye",
+      "uri": "https://a1s.unicdn.net/polopoly_fs/1.1008280.1521132432!/image/2762801378.png"
+  },
+  {
+      "id": 5,
+      "sport": "Euro Qualifiers",
+      "icon": "wrench",
+      "uri": "https://a1s.unicdn.net/polopoly_fs/1.800594.1482140895!/image/1842103136.png"
+  },
+  {
+      "id": 6,
+      "sport": "Women's World Cup",
+      "icon": "briefcase",
+      "uri": "https://a1s.unicdn.net/polopoly_fs/1.1008280.1521132432!/image/2762801378.png"
+  },
+  {
+      "id": 7,
+      "sport": "Football",
+      "icon": "user",
+      "uri": "https://a1s.unicdn.net/polopoly_fs/1.800594.1482140895!/image/1842103136.png"
+  },
+  {
+      "id": 8,
+      "sport": "Odd Boosts",
+      "icon": "globe",
+      "uri": "https://a1s.unicdn.net/polopoly_fs/1.800594.1482140895!/image/1842103136.png"
+  },
+  {
+      "id": 9,
+      "sport": "Tennis",
+      "icon": "beer",
+      "uri": "https://a1s.unicdn.net/polopoly_fs/1.800594.1482140895!/image/1842103136.png"
+  }
+];
 export default reducer
 
 function reducer(state = {
@@ -63,7 +120,8 @@ function reducer(state = {
   promo:[],
   inPlaySports: [],
   bets: [],
-  az: []
+  az: [],
+  categories
 }, action) {
   switch (action.type) {
     case SET_SCREEN:

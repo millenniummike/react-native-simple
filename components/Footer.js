@@ -17,13 +17,7 @@ class BottomTabs extends React.PureComponent {
           this.props.setScreen(SCREEN_HOME);
           this.props.displayMenu(false);
         }}>
-          { theme == "Maria" ? 
           <Image style={styles.imageBottomNav} source={require("../media/tab_home.png")}></Image>
-        
-          :
-          <Image style={styles.imageBottomNav} source={require("../media/tab_home.png")}></Image>
-        
-          }
         <Text style={styles.textBottomNav}>Home</Text>
 
       </TouchableOpacity>
