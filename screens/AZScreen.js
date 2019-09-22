@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, ScrollView, Text, TextInput, ActivityIndicator, FlatList } from 'react-native';
+import { View, ScrollView, TouchableOpacity, Image, Text, TextInput, ActivityIndicator, FlatList } from 'react-native';
 import CategoryButtonPanel from '../components/CategoryButtonPanel';
 import styles from '../Styles';
 import SvgUri from 'react-native-svg-uri'
 import { connect } from 'react-redux';
-import { addBet, listAZ } from '../reducer';
+import { addBet, listAZ, setScreen,setSport } from '../reducer';
+import { SCREEN_SPORT } from '../reducer';
 
 class AZScreen extends React.Component {
     constructor(props) {
@@ -16,6 +17,7 @@ class AZScreen extends React.Component {
     render() {
         console.disableYellowBox = true;
         const { az } = this.props;
+        const { categories } = this.props
         return (
             <View style={styles.mainContainer}>
                 <ScrollView
@@ -29,41 +31,43 @@ class AZScreen extends React.Component {
                         placeholderTextColor="grey"
                     />
                     <View>
-                        <Text style={styles.sectionTitle}>POPULAR</Text>
-                        
+                        <Text style={styles.sectionTitleWhite}>POPULAR</Text>
+
                     </View>
 
-                    <Text style={styles.sectionTitle}>ALL SPORTS</Text>
+                    <Text style={styles.sectionTitleWhite}>ALL SPORTS</Text>
 
                     {az.length > 0
-                                ? 
-                    <FlatList
-                        data={az}
-                        renderItem={({ item }) =>
-                            <View style={[styles.containerCategory, { backgroundColor: "white" }]} key={item.name}>
-                                <View style={{width:50,height:50}}>
-                                    <SvgUri style={styles.iconImage}
-                                        width="30"
-                                        height="30"
-                                        source={{ uri: 'https://static.kambicdn.com/client/ubuk/icons/navicons/sports/' + item.iconClassName + '.svg' }}
-                                    />
-                                </View>
-                                <Text onPress={() =>
-                                    this.props.navigation.push('Screen2', {
-                                        sportsCategory: item.name
-                                    })} style={[styles.colorDark, styles.width75, styles.floatRight, styles.textMedium, { paddingTop: 15 }]}>{item.name}</Text>
-                                <Text onPress={() =>
-                                    this.props.navigation.push('Screen2', {
-                                        sportsCategory: item.name
-                                    })} style={[styles.colorDark, styles.textMedium, styles.floatRight, { paddingTop: 15 }]}>{item.boCount}</Text>
-                            </View>
-                        }
-                    />
-                    : <ActivityIndicator
-                                    animating={true}
-                                    style={styles.loader}
-                                    size="large"
-                                />
+                        ?
+                        <FlatList
+                            data={az}
+                            renderItem={({ item }) =>
+                                <TouchableOpacity 
+                                    onPress={() => {
+                                        this.props.setScreen(SCREEN_SPORT);
+                                        this.props.setSport(item);
+                                    }}>
+                                    <View style={styles.containerCategory} key={item.name}>
+                                        <View style={{ padding:4, width: 30, height: 30 }}>
+                                            <SvgUri fill="#aaa"
+                                                width="20"
+                                                height="20"
+                                                source={{ uri: 'https://static.kambicdn.com/client/ubuk/icons/navicons/sports/' + item.iconClassName + '.svg' }}
+                                            />
+                                        </View>
+                                        <Text style={styles.textDefaultBlack}>{item.name}</Text>
+                                        <Text> - </Text>
+                                        <Text style={styles.textDefaultBlack}>{item.boCount}</Text>
+                                    </View>
+
+                                </TouchableOpacity>
+                            }
+                        />
+                        : <ActivityIndicator
+                            animating={true}
+                            style={styles.loader}
+                            size="large"
+                        />
                     }
                     <View style={{ paddingBottom: 80 }}></View>
                 </ScrollView>
@@ -77,17 +81,18 @@ const mapStateToProps = state => {
     let storedBets = state.bets.map(bet => ({ key: bet.id, ...bet }));
     let storedAZ = state.az.map(sport => ({ key: sport.id, ...sport }));
     return {
-      offerings: storedOfferings,
-      az: storedAZ,
-      bets: storedBets
+        offerings: storedOfferings,
+        az: storedAZ,
+        bets: storedBets,
+        categories: state.categories
     };
-  };
-  
-  const mapDispatchToProps = {
-    listAZ, addBet
-  };
+};
 
-  export default connect(mapStateToProps, mapDispatchToProps)(AZScreen);
+const mapDispatchToProps = {
+    listAZ, addBet, setScreen, setSport
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AZScreen);
 
 //** TODO get from api */
 const categories = [

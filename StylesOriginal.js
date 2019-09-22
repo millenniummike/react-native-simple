@@ -147,7 +147,7 @@ module.exports = {
         padding: 8,
         flex: 1,
         margin:1,
-        backgroundColor: "grey",
+        backgroundColor: "black",
         textAlign:"center",
         justifyContent: 'center',
         alignItems: 'center'
@@ -288,6 +288,9 @@ module.exports = {
     textDefault:{
         color:"white"
     },
+    textDefaultBlack:{
+        color:"black"
+    },
     bottomText:{
         textAlign:"center",
         fontSize:10,
@@ -410,12 +413,19 @@ module.exports = {
         fontSize: 18,
     },
     containerCategory: {
-        backgroundColor: '#333333',
-        color: "white",
-        margin: 0.2,
-        padding: 2,
+        backgroundColor: 'white',
+        width,
         flex: 1,
-        flexDirection: 'row'
+        marginTop:1,
+        marginBottom:1,
+        flexDirection: 'row',
+        padding:4
+    },
+    sectionTitleWhite: {
+        color: "white",
+        fontSize: 12,
+        paddingBottom: 10,
+        margin: 10
     },
     sectionTitle: {
         color: "black",

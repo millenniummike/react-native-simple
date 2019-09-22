@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, ScrollView, Text, StyleSheet } from 'react-native';
+import styles from '../Styles';
 
 class CategoryButtonPanel extends React.Component {
   render() {
@@ -13,7 +14,7 @@ class CategoryButtonPanel extends React.Component {
           >
             {data.map(item => (
               <View style={styles.container} key={item.id}>
-                <Text style={styles.text}>{item.name}</Text>
+                <Text style={styles.textDefault}>{item.name}</Text>
               </View>
             ))}
           </ScrollView>
@@ -24,18 +25,5 @@ class CategoryButtonPanel extends React.Component {
     return null;
   }
 }
-
-const styles = StyleSheet.create({
-    container: {
-      padding: 10,
-      backgroundColor: '#147b45',
-      margin:5
-    },
-    text: {
-      color: "white",
-      fontSize: 16,
-      textAlign: "center"
-    }
-  });
 
 export default CategoryButtonPanel;

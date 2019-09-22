@@ -3,6 +3,7 @@ export const TOGGLE_MENU = 'app/TOGGLE_MENU'
 export const DISPLAY_MENU = 'app/DISPLAY_MENU'
 export const LOGIN = 'app/LOGIN'
 export const SET_LOGGEDIN = 'app/SET_LOGGEDIN'
+export const SET_SPORT = 'app/SET_SPORT'
 export const LOGIN_SUCCESS = 'app/LOGIN_SUCCESS'
 export const LOGIN_FAILURE = 'app/LOGIN_FAILURE'
 export const SET_POSTLOGIN1 = 'app/SET_POSTLOGIN1'
@@ -11,7 +12,8 @@ export const SCREEN_HOME = 'app/SCREEN_HOME'
 export const SCREEN_IN_PLAY = 'app/SCREEN_IN_PLAY'
 export const SCREEN_AZ = 'app/SCREEN_AZ'
 export const SCREEN_LOGIN = 'app/SCREEN_LOGIN'
-export const SCREEN_MYBETS= 'app/SCREEN_MY_BET~S'
+export const SCREEN_SPORT = 'app/SCREEN_SPORT'
+export const SCREEN_MYBETS= 'app/SCREEN_MY_BETS'
 export const SCREEN_POSTLOGIN_FORM1 = 'app/SCREEN_POSTLOGIN_FORM1'
 export const SCREEN_POSTLOGIN_FORM2 = 'app/SCREEN_POSTLOGIN_FORM2'
 export const SCREEN_REGISTER = 'app/SCREEN_REGISTER'
@@ -23,6 +25,10 @@ export const SET_OTA_VERSION = 'app/SET_OTA_VERSION'
 export const GET_HOMEPAGE = 'sports-app/offering/GET_HOMEPAGE';
 export const GET_HOMEPAGE_SUCCESS = 'sports-app/offering/GET_HOMEPAGE_SUCCESS';
 export const GET_HOMEPAGE_FAIL = 'sports-app/offering/GET_HOMEPAGE_FAIL';
+
+export const GET_SPORT = 'sports-app/offering/GET_SPORT';
+export const GET_SPORT_SUCCESS = 'sports-app/offering/GET_SPORT_SUCCESS';
+export const GET_SPORT_FAIL = 'sports-app/offering/GET_SPORT_FAIL';
 
 export const GET_OFFERINGS = 'sports-app/offering/LOAD';
 export const GET_OFFERINGS_SUCCESS = 'sports-app/offering/LOAD_SUCCESS';
@@ -101,7 +107,7 @@ export default reducer
 
 function reducer(state = {
   previousScreen: [SCREEN_HOME],
-  showScreen: SCREEN_HOME,
+  showScreen: SCREEN_AZ,
   game: null,
   loggedIn: false,
   postLogin2: true,
@@ -121,6 +127,7 @@ function reducer(state = {
   inPlaySports: [],
   bets: [],
   az: [],
+  sportList: [],
   categories
 }, action) {
   switch (action.type) {
@@ -174,6 +181,12 @@ function reducer(state = {
         ...state,
         postLogin2: action.data
       };
+    
+    case SET_SPORT:
+          return {
+            ...state,
+            sport: action.data
+          };
 
     case TOGGLE_MENU:
       return {
@@ -260,6 +273,18 @@ function reducer(state = {
         errors: [...state.errors, 'Error while GET_HOME ' + action.error.message]
       };
 
+      case GET_SPORT:
+          return { ...state, loading: true };
+        case GET_SPORT_SUCCESS:
+          return { ...state, loading: false, sportList: action.payload.data};
+        case GET_SPORT_FAIL:
+          return {
+            ...state,
+            loading: false,
+            errors: [...state.errors, 'Error while GET_HOME ' + action.error.message]
+          };
+          
+          
     case GET_INPLAY:
       return { ...state, loading: true };
     case GET_INPLAY_SUCCESS:
@@ -322,9 +347,17 @@ export function setPostLogin2(value) {
     data: value
   };
 }
+
 export function setScreen(value) {
   return {
     type: SET_SCREEN,
+    data: value
+  };
+}
+
+export function setSport(value) {
+  return {
+    type: SET_SPORT,
     data: value
   };
 }
@@ -412,6 +445,17 @@ export function listHomePage() {
     payload: {
       request: {
         url: `https://www.unibet.com/sportsbook-feeds/apps/sports`
+      }
+    }
+  };
+}
+
+export function listSport(sport) {
+  return {
+    type: GET_SPORT,
+    payload: {
+      request: {
+        url: `https://eu-offering.kambicdn.org/offering/v2018/ubuk/listView/${sport}.json?lang=en_GB&market=GB`
       }
     }
   };

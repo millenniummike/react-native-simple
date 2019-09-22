@@ -33,10 +33,11 @@ class HomeScreen extends React.Component {
 
     renderCarouselItem = ({ item, index }) => {
         const { backgroundColor } = item;
+        console.log(item)
         return (
             <TouchableOpacity style={[styles.item, { backgroundColor }]}
                 onPress={() => {
-                    this._carousel.scrollToIndex(index);
+                    
                 }}>
                 <ImageBackground style={styles.imageBanner} source={{ 'uri': item.bgImg }}>
                     <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center' }}>
@@ -106,13 +107,17 @@ class HomeScreen extends React.Component {
                     {promo.length > 0
                         ?
                         <View style={{ margin: 5, padding: 5 }}>
-                            <Text style={{color:"white"}}>Carousel</Text>
-                        </View>
-                        : <ActivityIndicator
-                            animating={true}
-                            style={styles.loader}
-                            size="large"
-                        />
+                             <FlatList horizontal
+                                    data={promo}
+                                    renderItem={(item) => this.renderCarouselItem(item)}
+                                />
+                            </View>
+
+                            : <ActivityIndicator
+                                animating={true}
+                                style={styles.loader}
+                                size="large"
+                            />
                     }
                     <View style={{ margin: 5, padding: 5, backgroundColor: "white" }}>
 

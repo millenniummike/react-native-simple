@@ -1,7 +1,5 @@
 TODO
-
-Carousel on home page
+2nd leaf page on AZ
 Filter on In-Play
 Filter on AZ
-2nd leaf page on AZ
 OTA Update button menu
