@@ -288,9 +288,6 @@ module.exports = {
     textDefault:{
         color:"white"
     },
-    buttonNavContainer: {
-        flexDirection:"row"
-    },
     bottomText:{
         textAlign:"center",
         fontSize:10,
