@@ -5,6 +5,8 @@ import PlayScreen from './PlayScreen';
 import MyBetsScreen from './MyBetsScreen';
 import HomeScreen from './HomeScreen';
 import LoginScreen from './LoginScreen';
+import PostLoginForm1 from './PostLoginForm1';
+import PostLoginForm2 from './PostLoginForm2';
 import RegisterScreen from './RegisterScreen';
 
 import { SCREEN_HOME, SCREEN_IN_PLAY, SCREEN_AZ, SCREEN_REGISTER, SCREEN_POSTLOGIN_FORM1, SCREEN_POSTLOGIN_FORM2, SCREEN_LOGIN, SCREEN_MYBETS, SCREEN_GEOBLOCKED} from '../reducer'

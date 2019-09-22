@@ -3,7 +3,6 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import styles from '../Styles';
 import { connect } from 'react-redux';
 import { setScreen, setPostLogin1, setLoggedIn, setMenuBlocked} from '../reducer';
-import { SCREEN_HOME } from '../reducer'
 
 class PostLoginForm1 extends React.Component {
     constructor(props) {

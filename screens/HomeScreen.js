@@ -17,6 +17,9 @@ class HomeScreen extends React.Component {
             visible: true
         }
     }
+    navButtonPanelClick(){
+        alert ("TO DO")
+    }
     componentDidMount() {
         this.props.listOfferings('all');
         this.props.listHomePage();
@@ -101,7 +104,7 @@ class HomeScreen extends React.Component {
                     <Text style={{ color: "red" }}>{error}</Text>
                 )}
                 <ScrollView>
-                    <ButtonPanel onClick={this.onClick} data={navigation} />
+                    <ButtonPanel onClick={this.navButtonPanelClick} data={navigation} />
 
                     {promo.length > 0
                         ?
