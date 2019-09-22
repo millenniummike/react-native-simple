@@ -7,7 +7,7 @@ import MainScreen from "./screens/MainScreen";
 import Header from './components/Header';
 import Footer from './components/Footer';
 import PanelMenu from './components/PanelMenu';
-import PanelFilter from './components/PanelFilter';
+import BetSlipPanel from './components/BetSlipPanel';
 
 // API
 import axios from 'axios';
@@ -29,10 +29,10 @@ import logger from 'redux-logger'
 import codePush from "react-native-code-push";
 
 // debug logger
-//const store = createStore(reducer, applyMiddleware(axiosMiddleware(client), reduxWebsocketMiddleware, logger));
+const store = createStore(reducer, applyMiddleware(axiosMiddleware(client), reduxWebsocketMiddleware, logger));
 
 // no logger
-const store = createStore(reducer, applyMiddleware(axiosMiddleware(client)));
+//const store = createStore(reducer, applyMiddleware(axiosMiddleware(client)));
 
 //import { connect } from '@giantmachines/redux-websocket';
 //store.dispatch(connect('ws://localhost:9000'));
@@ -47,8 +47,8 @@ class App extends React.Component {
           <SafeAreaView style={styles.container}>
             <Header />
             <MainScreen />
+            <BetSlipPanel />
             <PanelMenu />
-            <PanelFilter />
             <Footer />
           </SafeAreaView>
       </Provider>

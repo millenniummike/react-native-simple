@@ -1,26 +1,17 @@
 export const SET_SCREEN = 'app/SET_SCREEN'
-export const GET_LIST1 = 'app/GET_LIST1'
-export const GET_LIST1_SUCCESS = 'app/GET_LIST1_SUCCESS'
-export const GET_LIST1_FAILURE = 'app/GET_LIST1_FAILURE'
-export const GET_LIST2 = 'app/GET_LIST2'
-export const GET_LIST2_SUCCESS = 'app/GET_LIST2_SUCCESS'
-export const GET_LIST2_FAILURE = 'app/GET_LIST2_FAILURE'
 export const TOGGLE_MENU = 'app/TOGGLE_MENU'
 export const DISPLAY_MENU = 'app/DISPLAY_MENU'
-export const DISPLAY_FILTER_PANEL = 'app/DISPLAY_FILTER_PANEL'
 export const LOGIN = 'app/LOGIN'
 export const SET_LOGGEDIN = 'app/SET_LOGGEDIN'
 export const LOGIN_SUCCESS = 'app/LOGIN_SUCCESS'
 export const LOGIN_FAILURE = 'app/LOGIN_FAILURE'
 export const SET_POSTLOGIN1 = 'app/SET_POSTLOGIN1'
 export const SET_POSTLOGIN2 = 'app/SET_POSTLOGIN2'
-export const SET_GAME = 'app/SET_GAME'
-export const APPLY_FILTER_LIST1 = 'app/APPLY_FILTER_LIST1'
 export const SCREEN_HOME = 'app/SCREEN_HOME'
-export const SCREEN_GAME = 'app/SCREEN_GAME'
-export const SCREEN_PRE_GAME = 'app/SCREEN_PRE_GAME'
+export const SCREEN_IN_PLAY = 'app/SCREEN_IN_PLAY'
+export const SCREEN_AZ = 'app/SCREEN_AZ'
 export const SCREEN_LOGIN = 'app/SCREEN_LOGIN'
-export const SCREEN_PLAY_GAME = 'app/SCREEN_PLAY_GAME'
+export const SCREEN_MYBETS= 'app/SCREEN_MY_BET~S'
 export const SCREEN_POSTLOGIN_FORM1 = 'app/SCREEN_POSTLOGIN_FORM1'
 export const SCREEN_POSTLOGIN_FORM2 = 'app/SCREEN_POSTLOGIN_FORM2'
 export const SCREEN_REGISTER = 'app/SCREEN_REGISTER'
@@ -28,6 +19,26 @@ export const SCREEN_GEOBLOCKED = 'app/SCREEN_GEOBLOCKED'
 export const GO_BACK_SCREEN = 'app/GO_BACK_SCREEN'
 export const SET_BLOCK_MENU = 'app/SET_BLOCK_MENU'
 export const SET_OTA_VERSION = 'app/SET_OTA_VERSION'
+
+export const GET_HOMEPAGE = 'sports-app/offering/GET_HOMEPAGE';
+export const GET_HOMEPAGE_SUCCESS = 'sports-app/offering/GET_HOMEPAGE_SUCCESS';
+export const GET_HOMEPAGE_FAIL = 'sports-app/offering/GET_HOMEPAGE_FAIL';
+
+export const GET_OFFERINGS = 'sports-app/offering/LOAD';
+export const GET_OFFERINGS_SUCCESS = 'sports-app/offering/LOAD_SUCCESS';
+export const GET_OFFERINGS_FAIL = 'sports-app/offering/LOAD_FAIL';
+
+export const GET_AZ = 'sports-app/offering/GET_AZ';
+export const GET_AZ_SUCCESS = 'sports-app/offering/GET_AZ_SUCCESS';
+export const GET_AZ_FAIL = 'sports-app/offering/GET_AZ_FAIL';
+
+export const GET_INPLAY = 'sports-app/offering/GET_INPLAY';
+export const GET_INPLAY_SUCCESS = 'sports-app/offering/GET_INPLAY_SUCCESS';
+export const GET_INPLAY_FAIL = 'sports-app/offering/GET_INPLAY_FAIL';
+
+export const ADD_BET = 'sports-app/bet/ADD_BET';
+export const LIVE_PANEL_INDEX = 'sports-app/LIVE_PANEL_INDEX';
+export const SET_BETSLIPPANEL = 'sports-app/SET_BETSLIPPANEL'
 
 export default reducer
 
@@ -40,15 +51,19 @@ function reducer(state = {
   postLogin1: true,
   showMenuBlocked: false,
   showMenu: false,
-  showFilterPanel: false,
-  filterValue: "",
-  filterList1: "",
-  filterList2: "",
-  list: [],
-  list2: [],
   websocketMessage: "",
   loginError: "",
-  OTAVersion: "Unknown"
+  OTAVersion: "Unknown",
+  betSlipPanelShow:false,
+  errors: [],
+  live:[],
+  livePanelIndex:1,
+  offerings: [],
+  inPlayGroups: [],
+  promo:[],
+  inPlaySports: [],
+  bets: [],
+  az: []
 }, action) {
   switch (action.type) {
     case SET_SCREEN:
@@ -82,13 +97,6 @@ function reducer(state = {
         game: state.previousScreen[1].game,
         showScreen: state.previousScreen[1].screen,
         previousScreen: state.previousScreen.pop()
-      };
-
-    case SET_GAME:
-      return {
-        ...state,
-        game: action.data,
-        previousScreen: state.previousScreen.concat({ screen: state.showScreen, game: action.data })
       };
 
     case SET_POSTLOGIN1:
@@ -155,41 +163,74 @@ function reducer(state = {
         showMenu: action.data
       };
 
-    case DISPLAY_FILTER_PANEL:
-      return {
-        ...state,
-        showFilterPanel: action.data
-      };
-
     case SET_BLOCK_MENU:
       return {
         ...state,
         showMenuBlocked: action.data
       };
 
-    case GET_LIST1:
+      case GET_OFFERINGS:
       return { ...state, loading: true };
-    case GET_LIST1_SUCCESS:
-      return { ...state, loading: false, list: mapList(action.payload.data.games) };
-    case GET_LIST1_FAILURE:
+    case GET_OFFERINGS_SUCCESS:
+      return { ...state, loading: false, offerings: action.payload.data.events };
+    case GET_OFFERINGS_FAIL:
       return {
         ...state,
         loading: false,
-        errors: [...state.errors, 'Error while GET_LIST ' + action.error.message]
+        errors: [...state.errors, 'Error while GET_OFFERINGS ' + action.error.message]
       };
 
-    case APPLY_FILTER_LIST1:
-      return { ...state, filterList1: action.data };
-
-    case GET_LIST2:
-      return { ...state, loading: true };
-    case GET_LIST2_SUCCESS:
-      return { ...state, loading: false, list2: action.payload.data.games };
-    case GET_LIST2_FAILURE:
+    case GET_AZ:
+      return { ...state, loading: true, az:[] };
+    case GET_AZ_SUCCESS:
+      return { ...state, loading: false, az: action.payload.data.layout.sections[1].widgets[0].sports };
+    case GET_AZ_FAIL:
       return {
         ...state,
         loading: false,
-        errors: [...state.errors, 'Error while GET_LIST ' + action.error.message]
+        errors: [...state.errors, 'Error while GET_AZ ' + action.error.message]
+      };
+
+    case GET_HOMEPAGE:
+      return { ...state, loading: true };
+    case GET_HOMEPAGE_SUCCESS:
+      return { ...state, loading: false, navigation: action.payload.data.navigationBar.links, live: action.payload.data.view.layout.sections[1].widgets[1].sports, promo: action.payload.data.view.layout.sections[1].widgets[0].promoBannerBasicSlides};
+    case GET_HOMEPAGE_FAIL:
+      return {
+        ...state,
+        loading: false,
+        errors: [...state.errors, 'Error while GET_HOME ' + action.error.message]
+      };
+
+    case GET_INPLAY:
+      return { ...state, loading: true };
+    case GET_INPLAY_SUCCESS:
+      return { ...state, loading: false, inPlaySports: createSports(action.payload.data), inPlayGroups: group(action.payload.data) };
+    case GET_INPLAY_FAIL:
+      return {
+        ...state,
+        loading: false,
+        errors: [...state.errors, 'Error while GET_INPLAY ' + action.error.message]
+      };
+
+    case ADD_BET:
+      return {
+        ...state,
+        loading: false,
+        bets: [...state.bets, action.payload.data]
+      };
+
+    case LIVE_PANEL_INDEX:
+      return {
+        ...state,
+        loading: false,
+        livePanelIndex: action.data
+      };
+
+      case SET_BETSLIPPANEL:
+      return {
+        ...state,
+        betSlipPanelShow: action.data
       };
 
     case 'REDUX_WEBSOCKET::MESSAGE':
@@ -236,13 +277,6 @@ export function goBackScreen() {
   };
 }
 
-export function setGame(value) {
-  return {
-    type: SET_GAME,
-    data: value
-  };
-}
-
 export function setLoggedIn(value) {
   return {
     type: SET_LOGGEDIN,
@@ -274,13 +308,6 @@ export function displayMenu(value) {
   };
 }
 
-export function displayFilterPanel(value) {
-  return {
-    type: DISPLAY_FILTER_PANEL,
-    data: value
-  };
-}
-
 export function setMenuBlocked(value) {
   return {
     type: SET_BLOCK_MENU,
@@ -288,33 +315,114 @@ export function setMenuBlocked(value) {
   };
 }
 
-export function getList1() {
+export function listOfferings(sport) {
   return {
-    type: GET_LIST1,
+    type: GET_OFFERINGS,
     payload: {
       request: {
-        url: `https://www.unibet.com/game-library-rest-api/games/getGamesByMarketAndDevice.json?jurisdiction=UK&brand=unibet&deviceGroup=mobilephone&locale=en_GB&currency=GBP&useGlobal=true&nrOfRows=800`
+        url: `https://ctd-api.kambi.com/offering/api/v3/kambiplay/listView/${sport}.json?lang=en_GB&market=GB&client_id=2&channel_id=1`
+        //** TODO Consume this */
+        //url: `https://www.unibet.co.uk/sportsbook-feeds/views/home`
       }
     }
   };
 }
 
-export function applyFilterList1(value) {
+export function listAZ() {
   return {
-    type: APPLY_FILTER_LIST1,
-    data: value
-  };
-}
-
-export function getList2() {
-  return {
-    type: GET_LIST2,
+    type: GET_AZ,
     payload: {
       request: {
-        url: `https://www.unibet.co.uk/game-library-rest-api/games/getNewGamesInternalByMarketAndDevice.json?jurisdiction=UK&brand=unibet&application=polopoly&locale=en_GB&nrOfRows=400&deviceGroup=mobilephone&startIndex=0&deviceOs=&categories=livecasino%2Csoftgames%2Ccasino&isLoggedIn=false&_=1568297989633`
+        url: `https://www.unibet.co.uk/sportsbook-feeds/views/sports/a-z`
       }
     }
   };
+}
+
+export function addBet(outcome) {
+  return {
+    type: ADD_BET,
+    payload: {
+      data: { "outcome": outcome, "amount": 33 }
+    }
+  };
+}
+
+export function listHomePage() {
+  return {
+    type: GET_HOMEPAGE,
+    payload: {
+      request: {
+        url: `https://www.unibet.com/sportsbook-feeds/apps/sports`
+      }
+    }
+  };
+}
+
+export function listInPlay() {
+  return {
+    type: GET_INPLAY,
+    payload: {
+      request: {
+        url: `https://ctd-api.kambi.com/offering/api/v2/kambiplay/event/live/open.json?lang=en_GB`
+      }
+    }
+  };
+}
+
+export function changeLivePanelIndex(index) {
+  return {
+    type: LIVE_PANEL_INDEX,
+    data: index
+  };
+}
+
+export function setBetSlipPanel(value) {
+  return {
+    type: SET_BETSLIPPANEL,
+    data:value
+  };
+}
+
+function createSports(data) {
+  var tmp = []
+  for (i = 0; i < data.liveEvents.length; i++) {
+    tmp[data.liveEvents[i].event.sport] = [];
+  }
+  for (i = 0; i < data.liveEvents.length; i++) {
+    tmp[data.liveEvents[i].event.sport].push(data.liveEvents[i]);
+  }
+  var sports = []
+  for (var p in tmp) {
+    if (tmp.hasOwnProperty(p)) {
+      var data = tmp[p];
+      sports.push({ "sport": p.toLocaleLowerCase() });
+    }
+  }
+  return sports
+}
+function group(data) {
+  function formatString(str) {
+    return str
+      .replace(/(\B)[^ ]*/g, match => (match.toLowerCase()))
+      .replace(/^[^ ]/g, match => (match.toUpperCase()));
+  }
+
+  var tmp = []
+  for (i = 0; i < data.liveEvents.length; i++) {
+    tmp[data.liveEvents[i].event.sport] = [];
+  }
+  for (i = 0; i < data.liveEvents.length; i++) {
+    tmp[data.liveEvents[i].event.sport].push(data.liveEvents[i]);
+  }
+  var grouped = []
+  for (var p in tmp) {
+    if (tmp.hasOwnProperty(p)) {
+      var data = tmp[p];
+      grouped.push({ "sport": formatString(p.replace("_", " ")), "sportIcon": p.toLowerCase().replace("_", "-"), data });
+    }
+  }
+  return grouped
 }
 
 function mapList(list) {
