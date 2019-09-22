@@ -68,6 +68,10 @@ class Panel extends React.Component {
                 <View style={styles.menuContainer}>
                     <Text style={styles.textMenu}>OTA Version={OTAVersion}</Text>
                 </View>
+
+                <TouchableOpacity style={styles.buttonTopNav} onPress={this.onButtonPress}>
+                    <Text>Update</Text>
+                    </TouchableOpacity>
             </ScrollView>
         } else {
             return <View></View>

@@ -50,7 +50,7 @@ module.exports = {
         position: 'absolute',
         padding:8,
         bottom: 90,
-        height: 120,
+        height: 180,
         width,
         backgroundColor: 'black'
     },
