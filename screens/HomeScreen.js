@@ -91,7 +91,6 @@ class HomeScreen extends React.Component {
         console.disableYellowBox = true;
         const { promo } = this.props;
         const { errors } = this.props;
-        const { offerings } = this.props;
         const { live } = this.props;
         const navigation = categories;
 
@@ -107,7 +106,7 @@ class HomeScreen extends React.Component {
                     {promo.length > 0
                         ?
                         <View style={{ margin: 5, padding: 5 }}>
-                            <Text>Carousel</Text>
+                            <Text style={{color:"white"}}>Carousel</Text>
                         </View>
                         : <ActivityIndicator
                             animating={true}
