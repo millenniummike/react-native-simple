@@ -18,12 +18,6 @@ class HomeScreen extends React.PureComponent {
             this.props.setOTAVersion(data.label)
         });
     }
-    onButtonPress() {
-        codePush.sync({
-          updateDialog: true,
-          installMode: codePush.InstallMode.IMMEDIATE
-        });
-      }
     
     render() {
         const { list } = this.props
