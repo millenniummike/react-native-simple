@@ -45,8 +45,8 @@ class MyBetsScreen extends React.Component {
                         <View style={styles.containerCategory} key={item.name}>
                             <Text onPress={() => {
                                 alert('press')
-                            }} style={[styles.colorLight, styles.width75, styles.floatRight, styles.textSmall]}>{item.name}</Text>
-                            <Text style={[styles.colorLight, styles.width75, styles.floatRight, styles.textSmall]}>{item.amount}</Text>
+                            }}>{item.name}</Text>
+                            <Text>{item.amount}</Text>
                         </View>
                     }
                 />
