@@ -1,4 +1,4 @@
 <resources>
 	<string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">xlIDcQYfgHoPrrjeiuG1H6RDXhtO68pFlqx2i</string>
-    <string name="app_name">RNSimple</string>
+    <string name="app_name">RNSports</string>
 </resources>

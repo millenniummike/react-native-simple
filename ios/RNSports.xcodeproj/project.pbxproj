@@ -11,24 +11,24 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		37DF060852EFF04E46FEA398 /* libPods-RNSimple.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFF9E02B04F16EC87C3DC56 /* libPods-RNSimple.a */; };
+		37DF060852EFF04E46FEA398 /* libPods-RNSports.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFF9E02B04F16EC87C3DC56 /* libPods-RNSports.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* RNSimple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RNSimple.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = RNSimple/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = RNSimple/AppDelegate.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* RNSports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RNSports.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = RNSports/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = RNSports/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = RNSimple/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RNSimple/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = RNSimple/main.m; sourceTree = "<group>"; };
-		1B715EDA5122B1F4F4C28CBA /* libPods-RNSimpleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNSimpleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		26B1F0EE8473B1A0B62BFE2C /* libPods-RNSimple-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNSimple-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		676281635FB29C4B17833F03 /* libPods-RNSimple-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNSimple-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6AFF9E02B04F16EC87C3DC56 /* libPods-RNSimple.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNSimple.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A71BEE4E16CDC6C11A6D51A1 /* Pods-RNSimple.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNSimple.release.xcconfig"; path = "Target Support Files/Pods-RNSimple/Pods-RNSimple.release.xcconfig"; sourceTree = "<group>"; };
-		DE4837D5E11E2CA5EB385966 /* Pods-RNSimple.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNSimple.debug.xcconfig"; path = "Target Support Files/Pods-RNSimple/Pods-RNSimple.debug.xcconfig"; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = RNSports/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RNSports/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = RNSports/main.m; sourceTree = "<group>"; };
+		1B715EDA5122B1F4F4C28CBA /* libPods-RNSportsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNSportsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		26B1F0EE8473B1A0B62BFE2C /* libPods-RNSports-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNSports-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		676281635FB29C4B17833F03 /* libPods-RNSports-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNSports-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AFF9E02B04F16EC87C3DC56 /* libPods-RNSports.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNSports.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A71BEE4E16CDC6C11A6D51A1 /* Pods-RNSports.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNSports.release.xcconfig"; path = "Target Support Files/Pods-RNSports/Pods-RNSports.release.xcconfig"; sourceTree = "<group>"; };
+		DE4837D5E11E2CA5EB385966 /* Pods-RNSports.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNSports.debug.xcconfig"; path = "Target Support Files/Pods-RNSports/Pods-RNSports.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -38,14 +38,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37DF060852EFF04E46FEA398 /* libPods-RNSimple.a in Frameworks */,
+				37DF060852EFF04E46FEA398 /* libPods-RNSports.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		13B07FAE1A68108700A75B9A /* RNSimple */ = {
+		13B07FAE1A68108700A75B9A /* RNSports */ = {
 			isa = PBXGroup;
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -56,7 +56,7 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = RNSimple;
+			name = RNSports;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -64,10 +64,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				6AFF9E02B04F16EC87C3DC56 /* libPods-RNSimple.a */,
-				26B1F0EE8473B1A0B62BFE2C /* libPods-RNSimple-tvOS.a */,
-				676281635FB29C4B17833F03 /* libPods-RNSimple-tvOSTests.a */,
-				1B715EDA5122B1F4F4C28CBA /* libPods-RNSimpleTests.a */,
+				6AFF9E02B04F16EC87C3DC56 /* libPods-RNSports.a */,
+				26B1F0EE8473B1A0B62BFE2C /* libPods-RNSports-tvOS.a */,
+				676281635FB29C4B17833F03 /* libPods-RNSports-tvOSTests.a */,
+				1B715EDA5122B1F4F4C28CBA /* libPods-RNSportsTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -82,7 +82,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* RNSimple */,
+				13B07FAE1A68108700A75B9A /* RNSports */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
@@ -96,7 +96,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* RNSimple.app */,
+				13B07F961A680F5B00A75B9A /* RNSports.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,8 +104,8 @@
 		D902B897AC5D842BB906CAC9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DE4837D5E11E2CA5EB385966 /* Pods-RNSimple.debug.xcconfig */,
-				A71BEE4E16CDC6C11A6D51A1 /* Pods-RNSimple.release.xcconfig */,
+				DE4837D5E11E2CA5EB385966 /* Pods-RNSports.debug.xcconfig */,
+				A71BEE4E16CDC6C11A6D51A1 /* Pods-RNSports.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -113,9 +113,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		13B07F861A680F5B00A75B9A /* RNSimple */ = {
+		13B07F861A680F5B00A75B9A /* RNSports */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "RNSimple" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "RNSports" */;
 			buildPhases = (
 				D89BBC964C990FA2CEE03B28 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -128,9 +128,9 @@
 			);
 			dependencies = (
 			);
-			name = RNSimple;
-			productName = RNSimple;
-			productReference = 13B07F961A680F5B00A75B9A /* RNSimple.app */;
+			name = RNSports;
+			productName = RNSports;
+			productReference = 13B07F961A680F5B00A75B9A /* RNSports.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -142,7 +142,7 @@
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = Facebook;
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "RNSimple" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "RNSports" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -156,7 +156,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* RNSimple */,
+				13B07F861A680F5B00A75B9A /* RNSports */,
 			);
 		};
 /* End PBXProject section */
@@ -203,7 +203,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RNSimple-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-RNSports-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -250,7 +250,7 @@
 				13B07FB21A68108700A75B9A /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = RNSimple;
+			path = RNSports;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -258,12 +258,12 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DE4837D5E11E2CA5EB385966 /* Pods-RNSimple.debug.xcconfig */;
+			baseConfigurationReference = DE4837D5E11E2CA5EB385966 /* Pods-RNSports.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				INFOPLIST_FILE = RNSimple/Info.plist;
+				INFOPLIST_FILE = RNSports/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -271,18 +271,18 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = RNSimple;
+				PRODUCT_NAME = RNSports;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A71BEE4E16CDC6C11A6D51A1 /* Pods-RNSimple.release.xcconfig */;
+			baseConfigurationReference = A71BEE4E16CDC6C11A6D51A1 /* Pods-RNSports.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = RNSimple/Info.plist;
+				INFOPLIST_FILE = RNSports/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -290,7 +290,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = RNSimple;
+				PRODUCT_NAME = RNSports;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -397,7 +397,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "RNSimple" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "RNSports" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -406,7 +406,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "RNSimple" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "RNSports" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
