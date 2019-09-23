@@ -107,7 +107,7 @@ export default reducer
 
 function reducer(state = {
   previousScreen: [SCREEN_HOME],
-  showScreen: SCREEN_AZ,
+  showScreen: SCREEN_HOME,
   game: null,
   loggedIn: false,
   postLogin2: true,
