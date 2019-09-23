@@ -4,10 +4,18 @@ import React from 'react';
 import { ScrollView, Image, View, TouchableOpacity, Text } from 'react-native';
 import { setScreen, toggleMenu, setLoggedIn } from '../reducer';
 import { SCREEN_HOME, SCREEN_GAME, SCREEN_REGISTER } from '../reducer'
+import codePush from "react-native-code-push";
+
 class Panel extends React.Component {
     constructor(props) {
         super(props);
     }
+    onButtonUpdatePress() {
+        codePush.sync({
+          updateDialog: true,
+          installMode: codePush.InstallMode.IMMEDIATE
+        });
+      }
     render() {
         const { showMenu } = this.props
         const { showMenuBlocked } = this.props
@@ -68,6 +76,9 @@ class Panel extends React.Component {
                 <View style={styles.menuContainer}>
                     <Text style={styles.textMenu}>OTA Version={OTAVersion}</Text>
                 </View>
+                <TouchableOpacity style={styles.buttonTopNav} onPress={this.onButtonUpdatePress}>
+                    <Text>Update</Text>
+                </TouchableOpacity>
             </ScrollView>
         } else {
             return <View></View>
