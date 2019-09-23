@@ -116,7 +116,7 @@ function reducer(state = {
   showMenu: false,
   websocketMessage: "",
   loginError: "",
-  OTAVersion: "Unknown",
+  OTAVersion: "0",
   betSlipPanelShow:false,
   errors: [],
   live:[],
