@@ -4,9 +4,10 @@ import ButtonPanel from '../components/NavButtonPanel';
 import BetButton from '../components/BetButton';
 import styles from '../Styles';
 import { connect } from 'react-redux';
-import { listOfferings, listHomePage, setBetSlipPanel, changeLivePanelIndex, setScreen } from '../reducer';
+import { listOfferings, listHomePage, setBetSlipPanel, changeLivePanelIndex, setScreen, setOTAVersion } from '../reducer';
 import moment from 'moment';
 import { SCREEN_BLANK } from '../reducer'
+import codePush from "react-native-code-push";
 
 class HomeScreen extends React.Component {
     constructor(props) {
@@ -22,6 +23,9 @@ class HomeScreen extends React.Component {
         this.props.listOfferings('all');
         this.props.listHomePage();
         this.props.setBetSlipPanel(false);
+        codePush.getUpdateMetadata().then((data) => {
+            this.props.setOTAVersion(data.label)
+        })
     }
 
     componentWillReceiveProps(nextProps) {
@@ -174,7 +178,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    listOfferings, listHomePage, changeLivePanelIndex, setBetSlipPanel, setScreen
+    listOfferings, listHomePage, changeLivePanelIndex, setBetSlipPanel, setScreen, setOTAVersion
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
