@@ -56,7 +56,6 @@ class AZScreen extends React.Component {
                                             />
                                         </View>
                                         <Text style={styles.textDefaultBlack}>{item.name}</Text>
-                                        <Text> - </Text>
                                         <Text style={styles.textDefaultBlack}>{item.boCount}</Text>
                                     </View>
 

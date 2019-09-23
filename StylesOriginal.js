@@ -289,7 +289,8 @@ module.exports = {
         color:"white"
     },
     textDefaultBlack:{
-        color:"black"
+        color:"black",
+        margin:4
     },
     bottomText:{
         textAlign:"center",
