@@ -1,4 +1,4 @@
-export const styleTheme="Maria"
+export const styleTheme="Unibet"
 import { StyleSheet } from 'react-native';
 import StyleSheet1 from './StylesMaria'
 import StyleSheet2 from './StylesOriginal'

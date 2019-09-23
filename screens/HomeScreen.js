@@ -15,7 +15,9 @@ class HomeScreen extends React.PureComponent {
     componentDidMount() {
         this.props.getList1()
         codePush.getUpdateMetadata().then((data) => {
-            this.props.setOTAVersion(data.label)
+            if (data) {
+                this.props.setOTAVersion(data.label)
+            }
         });
     }
     
