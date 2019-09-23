@@ -1,4 +1,4 @@
-package com.rnsimple;
+package com.rncasino;
 
 import android.app.Application;
 import android.util.Log;
