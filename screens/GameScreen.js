@@ -28,7 +28,7 @@ class GameScreen extends React.PureComponent {
         console.disableYellowBox = true;
         return (
             <View style={styles.mainContainer}>
-                <TouchableOpacity onPress={() => {
+                 <TouchableOpacity onPress={() => {
                                 this.props.goBackScreen()
                             }}
                                 style={styles.button}>
@@ -51,8 +51,8 @@ class GameScreen extends React.PureComponent {
                         renderItem={({ item, index }) => (
                             <TouchableOpacity
                                 onPress={() => {
-                                    this.props.setScreen(SCREEN_PRE_GAME);
                                     this.props.setGame(item);
+                                    this.props.setScreen(SCREEN_PRE_GAME);
                                     this.props.displayMenu(false);
                                 }}>
                                 <View style={styles.listItem}>

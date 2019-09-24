@@ -32,7 +32,7 @@ export const SET_OTA_VERSION = 'app/SET_OTA_VERSION'
 export default reducer
 
 function reducer(state = {
-  previousScreen: [SCREEN_HOME],
+  previousScreen: [],
   showScreen: SCREEN_HOME,
   game: null,
   loggedIn: false,
@@ -73,22 +73,28 @@ function reducer(state = {
       return {
         ...state,
         showScreen: action.data,
-        previousScreen: state.previousScreen.concat({ screen: action.data, game: state.game })
+        previousScreen: state.previousScreen.concat({ screen: state.showScreen, game: state.game })
       };
 
     case GO_BACK_SCREEN:
+      var previous = state.previousScreen.length-1
+      if (previous>=0) {
+          var game = null
+          if (state.previousScreen[previous-1]) {
+            game = state.previousScreen[previous-1].game
+          }
       return {
         ...state,
-        game: state.previousScreen[1].game,
-        showScreen: state.previousScreen[1].screen,
-        previousScreen: state.previousScreen.pop()
-      };
+        game,
+        showScreen: state.previousScreen[previous].screen,
+        previousScreen: state.previousScreen.filter( (_,i) => i !== previous)
+      }
+    }
 
     case SET_GAME:
       return {
         ...state,
-        game: action.data,
-        previousScreen: state.previousScreen.concat({ screen: state.showScreen, game: action.data })
+        game: action.data
       };
 
     case SET_POSTLOGIN1:

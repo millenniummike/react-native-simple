@@ -43,8 +43,8 @@ class HomeScreen extends React.PureComponent {
                         renderItem={({ item, index }) => (
                             <TouchableOpacity
                             onPress={() => {
-                                this.props.setScreen(SCREEN_PRE_GAME);
                                 this.props.setGame(item);
+                                this.props.setScreen(SCREEN_PRE_GAME);
                                 this.props.displayMenu(false);
                             }}>
                                 <View style={styles.listItemCarousel}>
@@ -61,8 +61,8 @@ class HomeScreen extends React.PureComponent {
                         renderItem={({ item, index }) => (
                             <TouchableOpacity
                             onPress={() => {
-                                this.props.setScreen(SCREEN_PRE_GAME);
                                 this.props.setGame(item);
+                                this.props.setScreen(SCREEN_PRE_GAME);
                                 this.props.displayMenu(false);
                             }}>
                                 <View style={styles.listItem}>
@@ -78,8 +78,8 @@ class HomeScreen extends React.PureComponent {
                         renderItem={({ item, index }) => (
                             <TouchableOpacity
                             onPress={() => {
-                                this.props.setScreen(SCREEN_PRE_GAME);
                                 this.props.setGame(item);
+                                this.props.setScreen(SCREEN_PRE_GAME);
                                 this.props.displayMenu(false);
                             }}>
                                 <View style={styles.listItemBig}>
@@ -96,8 +96,8 @@ class HomeScreen extends React.PureComponent {
                         renderItem={({ item, index }) => (
                             <TouchableOpacity
                             onPress={() => {
-                                this.props.setScreen(SCREEN_PRE_GAME);
                                 this.props.setGame(item);
+                                this.props.setScreen(SCREEN_PRE_GAME);
                                 this.props.displayMenu(false);
                             }}>
                                 <View style={styles.listItem}>

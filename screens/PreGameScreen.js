@@ -3,8 +3,8 @@ import { View, Text, TouchableOpacity, FlatList } from 'react-native';
 import FastImage from 'react-native-fast-image'
 import styles from '../Styles';
 import { connect } from 'react-redux';
-import { setScreen, getList1, displayMenu, setGame, applyFilterList1 } from '../reducer';
-import { SCREEN_LOGIN, SCREEN_PLAYING_GAME, SCREEN_GAME } from '../reducer'
+import { setScreen, getList1, displayMenu, setGame, applyFilterList1, goBackScreen } from '../reducer';
+import { SCREEN_LOGIN, SCREEN_PLAYING_GAME, SCREEN_GAME, SCREEN_PRE_GAME } from '../reducer'
 
 class PreGameScreen extends React.Component {
     constructor(props) {
@@ -25,6 +25,12 @@ class PreGameScreen extends React.Component {
         console.disableYellowBox = true;
         return (
             <View style={styles.mainContainer}>
+                <TouchableOpacity onPress={() => {
+                                this.props.goBackScreen()
+                            }}
+                                style={styles.button}>
+                                <Text style={{ color: "white" }}>Back</Text>
+                            </TouchableOpacity>
                 {game ?
                     <View>
                         <FastImage style={styles.imageGameHeader} source={{ uri: game.imageUrl }} />
@@ -47,13 +53,8 @@ class PreGameScreen extends React.Component {
                             style={styles.buttonBig}>
                             <Text style={{ color: "white" }}>Play For Fun</Text>
                         </TouchableOpacity>
-                    </View>
-                    :
-                    <View>
-                        <Text>No game selected</Text>
-                    </View>
-                }
-                <View>
+
+                        <View>
                     <Text style={styles.textTitle}>Tags</Text>
                     {game.tags ?
                         <FlatList numColumns="4" data={game.tags} contentContainerStyle={styles.x}
@@ -79,6 +80,7 @@ class PreGameScreen extends React.Component {
                             <TouchableOpacity
                                 onPress={() => {
                                     this.props.setGame(item);
+                                    this.props.setScreen(SCREEN_PRE_GAME);
                                     this.props.displayMenu(false);
                                 }}>
                                 <View style={styles.listItem}>
@@ -90,6 +92,13 @@ class PreGameScreen extends React.Component {
                     >
                     </FlatList>
                 </View>
+                    </View>
+                    :
+                    <View>
+                        <Text>No game selected</Text>
+                    </View>
+                }
+                
             </View>
         );
     }
@@ -100,7 +109,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    setScreen, getList1, displayMenu, setGame, applyFilterList1
+    setScreen, getList1, displayMenu, setGame, applyFilterList1, goBackScreen
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PreGameScreen);
