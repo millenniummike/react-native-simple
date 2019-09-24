@@ -154,12 +154,13 @@ function reducer(state = {
       return {
         ...state,
         showScreen: action.data,
-        previousScreen: state.previousScreen
+        previousScreen: state.showScreen
       };
 
     case GO_BACK_SCREEN:
       return {
-        ...state
+        ...state,
+        showScreen: state.previousScreen
       };
 
     case SET_POSTLOGIN1:
