@@ -13,7 +13,6 @@ class Header extends React.Component {
   render() {
     const { loggedIn } = this.props
     const { websocketMessage } = this.props
-    console.log(loggedIn)
     return (
       <View style={styles.header}>
         <View style={styles.headerLeft}>

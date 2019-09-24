@@ -13,9 +13,15 @@ class Panel extends React.Component {
     onButtonUpdatePress() {
         codePush.sync({
           updateDialog: true,
+          rollbackRetryOptions: {
+            delayInHours: 0,
+            maxRetryAttempts: 3
+          },
           installMode: codePush.InstallMode.IMMEDIATE
         });
       }
+
+
     render() {
         const { showMenu } = this.props
         const { showMenuBlocked } = this.props
