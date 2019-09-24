@@ -4,7 +4,6 @@ import styles from '../Styles';
 import { setScreen, toggleMenu } from '../reducer';
 import { connect } from 'react-redux';
 import { SCREEN_LOGIN, SCREEN_REGISTER } from '../reducer'
-import { styleTheme } from '../Styles'
 
 class Header extends React.Component {
   constructor(props) {
@@ -12,7 +11,7 @@ class Header extends React.Component {
   }
   render() {
     const { loggedIn } = this.props
-    const { websocketMessage } = this.props
+    const { balance } = this.props
     console.log(loggedIn)
     return (
       <View style={styles.header}>
@@ -24,7 +23,7 @@ class Header extends React.Component {
         { loggedIn ?
         <View style={styles.headerRight}>
           <Text style={{ color: "white" }}>Balance:</Text>
-          <Text style={{ color: "white" }}>£{websocketMessage}</Text>
+          <Text style={{ color: "white" }}>£{balance}</Text>
       </View>
          :
          <View style={styles.headerRight}>

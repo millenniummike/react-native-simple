@@ -106,7 +106,7 @@ const categories = [
 export default reducer
 
 function reducer(state = {
-  previousScreen: [SCREEN_HOME],
+  previousScreen: SCREEN_HOME,
   showScreen: SCREEN_HOME,
   game: null,
   loggedIn: false,
@@ -128,6 +128,7 @@ function reducer(state = {
   bets: [],
   az: [],
   sportList: [],
+  balance:333,
   categories
 }, action) {
   switch (action.type) {
@@ -153,15 +154,12 @@ function reducer(state = {
       return {
         ...state,
         showScreen: action.data,
-        previousScreen: state.previousScreen.concat({ screen: action.data, game: state.game })
+        previousScreen: state.previousScreen
       };
 
     case GO_BACK_SCREEN:
       return {
-        ...state,
-        game: state.previousScreen[1].game,
-        showScreen: state.previousScreen[1].screen,
-        previousScreen: state.previousScreen.pop()
+        ...state
       };
 
     case SET_POSTLOGIN1:

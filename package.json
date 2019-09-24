@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "react": "16.8.6",
+    "react-devtools": "^4.1.0",
     "react-native": "0.60.5",
     "react-native-circular-progress": "^1.3.0",
     "react-native-code-push": "^5.7.0",
@@ -34,7 +35,8 @@
     "react-native-svg-uri": "^1.2.3",
     "react-native-webview": "^7.1.0",
     "react-test-renderer": "16.8.6",
-    "redux-axios-middleware": "^4.0.1"
+    "redux-axios-middleware": "^4.0.1",
+    "remote-redux-devtools": "^0.5.16"
   },
   "jest": {
     "preset": "react-native"

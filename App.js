@@ -18,9 +18,10 @@ const client = axios.create({
 });
 import reduxWebsocket from '@giantmachines/redux-websocket';
 const reduxWebsocketMiddleware = reduxWebsocket();
+import { composeWithDevTools } from "remote-redux-devtools"
 
 // Redux
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducer';
 import logger from 'redux-logger'
@@ -28,11 +29,20 @@ import logger from 'redux-logger'
 // Codepush
 import codePush from "react-native-code-push";
 
+// redux dev tools
+const store = createStore(
+  reducer,
+  compose (
+    applyMiddleware(axiosMiddleware(client), reduxWebsocketMiddleware, logger),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+  )
+)
+
 // debug logger
 //const store = createStore(reducer, applyMiddleware(axiosMiddleware(client), reduxWebsocketMiddleware, logger));
 
 // no logger
-const store = createStore(reducer, applyMiddleware(axiosMiddleware(client)));
+//const store = createStore(reducer, applyMiddleware(axiosMiddleware(client)));
 
 //import { connect } from '@giantmachines/redux-websocket';
 //store.dispatch(connect('ws://localhost:9000'));

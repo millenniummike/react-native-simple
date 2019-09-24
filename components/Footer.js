@@ -4,7 +4,6 @@ import React from 'react';
 import { View, TouchableOpacity, Text, Image } from 'react-native';
 import { setScreen, toggleMenu, displayMenu } from '../reducer';
 import { SCREEN_HOME, SCREEN_AZ, SCREEN_IN_PLAY, SCREEN_SPORTS, SCREEN_MYBETS } from '../reducer'
-import { theme } from '../Styles'
 
 class BottomTabs extends React.PureComponent {
   constructor(props) {
